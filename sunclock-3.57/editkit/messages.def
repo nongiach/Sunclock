@@ -1,0 +1,142 @@
+
+#define SELECT_REALLOC "select realloc."
+#define CANT_SELECT "Can't select."
+#define FONTS_NOT_FOUND "Fonts not found."
+#define HELP "Help"
+#define EXECL_FAILED "Execl failed!"
+#define FORK_ERROR "Fork error"
+#define SAVE_AS "Save as"
+#define OPEN "Open"
+#define MAIN_BUFFER_FULL "Main buffer full!"
+#define GOTO_LINE "Goto line"
+#define COMMAND "Command"
+#define GOTO_COLUMN "Goto Column"
+#define SEARCH_FOR "Search for"
+#define REPLACE_WITH "Replace with"
+#define ASK_REPLACE "Replace with %s ? (Y/N/Esc/!)"
+#define SAR_FOR "SAR for"
+#define TAB_SIZE "Tab size"
+#define WRAP_COL "Wrap col"
+#define READ_FILE "Read file"
+#define WRITE_FILE "Write file"
+#define ALT_KEY_BINDINGS "Alt-key (Escape ! key) bindings ?"
+
+#ifndef EXTHELP
+
+#ifdef EMACS
+
+#ifdef MINIMAL
+static char HELP_STR[] = "EMX (mini EMacs clone for X) Ver. "VERSION"\0\
+Usage: emx [-fn font] [-j line#] [-t tab#] [-w width] [-h height]\0\
+           [-bg color] [-fg color] [-hibg color] [-hifg color] [-cr color]\0\
+           [-rc rcfile] [file]\0\
+MFOCTBNAE flags: Mod, Fill, Overwr, Case, Tab, Blk mark, iNdent, rep All, Edit\0\
+The Mod flag must be reset (with ^OM) to exit or load new file.\0\0\
+F1  show help     F2  save          F3 open new file  F5 exec command\0\
+F6  Chgdir        F10 rxvt          Alt-? (Esc-!?) private key bindings\0\
+Shift-Del cut     Shift-Ins paste   ^Ins copy block to X clipboard\0\
+^A  goto bol      ^E  goto eol      ^G  goto line     ^O? switch a flag\0\
+^B  left          ^F  right         ^N  down          ^P  up\0\
+^D  del char      ^H  del prev char ^J  insert line   ^K  del to eol\0\
+^Q? literal char  ^S ^R find string ^U  repeat SAR    ^T  transpose\0\
+^V  page down     ^W  cut block     ^Y  paste block   ^_  undo\0\
+E B word left     E F word right    E N scroll down   E P scroll up\0\
+E < start of file E > end of file   E _ redo          E % find & replace\0\
+E W copy block    E V page up       E . set mark      E X switch marks\0\
+E L lowcase block E U upcase block  E J fill paragr   E Q format paragr\0\
+^XC (^XQ) exit    ^XH show help     ^XS save          ^XF open new file\0\
+^XI insert file   ^XV write block   ^XW save as       ^XK del word\0\
+^XM togl rec mac  ^XP play macro    ^XT get tab size  ^XU delete line\0\
+                  Press any key to continue ...";
+#else
+
+static char HELP_STR[] = "EMX (mini EMacs clone for X) Ver. "VERSION"\0\
+Usage: emx [-fn font] [-j line#] [-t tab#] [-w width] [-h height]\0\
+           [-bg color] [-fg color] [-hibg color] [-hifg color] [-cr color]\0\
+           [-rc rcfile] [file]\0\0\
+MFOCTBNAE flags: Mod, Fill, Overwr, Case, Tab, Blk mark, iNdent, rep All, Edit\0\
+The Mod flag must be reset (with ^OM) to exit or load new file.\0\0\
+F1  show help     F2  save          F3 open new file  F5  exec command\0\
+F6  Chgdir        F9  open new editor session         F10 rxvt\0\
+Shift-Del  cut    Shift-Ins  paste  ^Ins  copy block to X clipboard\0\
+Alt-?  (Esc-!?) list of private key bindings\0\0\
+^A  goto bol      ^E  goto eol      ^G  goto line     ^O? switch a flag\0\
+^B  left          ^F  right         ^N  down          ^P  up\0\
+^D  del char      ^H  del prev char ^J  insert line   ^K  del to eol\0\
+^Q? literal char  ^S ^R find string ^U  repeat SAR    ^T  transpose\0\
+^V  page down     ^W  cut block     ^Y  paste block   ^_  undo\0\0\
+E B word left     E F word right    E N scroll down   E P scroll up\0\
+E < start of file E > end of file   E _ redo          E % find & replace\0\
+E W copy block    E V page up       E . set mark      E X switch marks\0\
+E L lowcase block E U upcase block  E J fill paragr   E Q format paragr\0\0\
+^XC (^XQ) exit    ^XH show help     ^XS save          ^XF open new file\0\
+^XI insert file   ^XV write block   ^XW save as       ^XD del word\0\
+^XM togl rec mac  ^XP play macro    ^XT get tab size  ^XK delete line\0\0\
+                  Press any key to continue ...";
+
+#endif /* MINIMAL */
+#endif /* EMACS */
+
+
+#ifdef WORDSTAR
+
+#ifdef MINIMAL
+
+/* Help screen -- rewrite to suit your own tastes */
+
+static char HELP_STR[] = "EDX (EDitor for X) Ver. "VERSION"\0\
+Usage: edx [-fn font] [-j line#] [-t tab#] [-w width] [-h height] [-bg color]\0\
+    [-fg color] [-hibg color] [-hifg color] [-cr color] [-rc rcfile] [file]\0\
+^O[mfoctbnae] (*Mod, Fill, Overwr, Case, Tab, Blk mark, iNdent, rep All, Edit)\0\
+*NOTE: M flag must be reset to exit or load new file.\0\
+ F6 Chgdir         Esc-!? Alt-? private key bindings (?=A...Z)\0\
+Shift-Del cut     ^Ins copy          Shift-Ins paste\0\
+^QS goto bol      ^KQ ^KX exit       ^KH F1 show help\0\
+^QD goto eol      ^KB mark block on  ^KR read file\0\
+^QR start of file ^KK mark block off ^KF F3 open new file\0\
+^QC end of file   ^KY cut block      ^KS F2 save & resume\0\
+^QF find          ^KC copy block     ^KD reset M flag\0\
+^QA find & repl   ^KV paste block    ^KZ F10 rxvt\0\
+^QY del to eol    ^KW write block     F5 exec command\0\
+^QM get margin    ^KT get tab size   ^QP goto prev pos\0\
+^QU uppercase blk ^QL lowercase blk  ^QT transpose characters\0\
+^A word left      ^R page up     ^Z scroll up      ^I insert tab\0\
+^F word right     ^C page down   ^W scroll dn      ^J goto line\0\
+^T del word       ^D right       ^V toggle insert  ^L repeat find\0\
+^G del char       ^S left        ^M ^N put newline ^B ^QB justify par.\0\
+^H del prev char  ^E up          ^KP play macro    ^U undo\0\
+^Y delete line    ^X down        ^KM togl rec mac  Alt-U redo\0\
+                   Press any key to continue ...";
+
+#else
+
+/* Help screen -- rewrite to suit your own tastes */
+
+static char HELP_STR[] = "EDX (EDitor for X) Ver. "VERSION"\0\0\
+Usage: edx [-fn font] [-jump line#] [-tab skip] [-w width] [-h height]\0\
+           [-bg color] [-fg color] [-hibg color] [-hifg color] [-cr color]\0\
+           [-rc rcfile] [file]\0\0\
+^O[mfoctbnae] (*Mod, Fill, Overwr, Case, Tab, Blk mark, iNdent, rep All, Edit)\0\
+*NOTE: M flag must be reset to exit or load new file.\0\0\
+ F6 Chgdir         Esc-!? Alt-? private key bindings (?=A...Z)\0\
+Shift-Del cut     ^Ins copy          Shift-Ins paste\0\
+^QS goto bol      ^KQ ^KX exit       ^KH F1 show help\0\
+^QD goto eol      ^KB mark block on  ^KR read file\0\
+^QR start of file ^KK mark block off ^KF F3 open new file\0\
+^QC end of file   ^KY cut block      ^KS F2 save & resume\0\
+^QF find          ^KC copy block     ^KD reset M flag\0\
+^QA find & repl   ^KV paste block    ^KZ F10 rxvt\0\
+^QY del to eol    ^KW write block     F5 exec command\0\
+^QM get margin    ^KT get tab size   ^QP goto prev pos\0\
+^QU uppercase blk ^QL lowercase blk  ^QT transpose characters\0\
+^A word left      ^R page up     ^Z scroll up      ^I insert tab\0\
+^F word right     ^C page down   ^W scroll dn      ^J goto line\0\
+^T del word       ^D right       ^V toggle insert  ^L repeat find\0\
+^G del char       ^S left        ^M ^N put newline ^B ^QB justify par.\0\
+^H del prev char  ^E up          ^KP play macro    ^U undo\0\
+^Y delete line    ^X down        ^KM togl rec mac  ^KU redo\0\0\
+                   Press any key to continue ...";
+
+#endif /* MINIMAL */
+#endif /* WORDSTAR */
+#endif /* EXTHELP */

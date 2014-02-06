@@ -1,0 +1,125 @@
+# English
+# Day names
+Sun
+Mon
+Tue
+Wed
+Thu
+Fri
+Sat
+# Month names
+Jan
+Feb
+Mar
+Apr
+May
+Jun
+Jul
+Aug
+Sep
+Oct
+Nov
+Dec
+# Additional labels
+Point
+GMT time
+Solar time
+Legal time
+Day length
+Sunrise
+Sunset
+#
+seconds
+minute
+hour
+day
+days
+#
+Click on a city
+Click on a location
+Click consecutively on two locations
+Double click or strike ° for ° ' "
+#
+Key
+Key/Mouse controls
+Escape
+Escape menu
+Unknown key binding !!
+Synchro
+Progress value =
+Global time shift =
+#
+City name
+Timezone
+Latitude
+Longitude
+Size
+Warning: %s, lat = %s lon = %s%salready in list of cities !!
+Overriding previous entry for %s
+#
+Option
+Activating selected option...
+Option incorrect or not available at runtime !!
+Options: strike <Ctrl><Space> for blank space within an item
+(once)
+(periodically, period %d seconds)
+(with starry sky)
+(blank root window)
+with the following rather long list of options:
+Starting from **, options are runtime configurable
+Calculating new image...
+Sunclock has a number of internal procedures which can be accessed through mouse clicks or key controls:
+# General help
+Show help and options (H or click on strip)
+Load Earth map file (F or mouse button 2)
+Zoom (Z or mouse button 3)
+Parameters of Urban locations
+Option command window
+Use coordinate mode
+Use solar time mode
+Use distance mode
+Use hour extension mode
+Use legal time mode
+Modify time forward
+Modify time backward
+Adjust time progress
+Reset global time shift to zero
+Draw/Erase Night area
+Draw/Erase Sun and Moon
+Draw/Erase meridians
+Draw/Erase parallels
+Draw/Erase Tropics/Equator/Arctic circles
+Open new map window
+Close window
+Iconify window
+Refresh map window
+Adjust window width to screen size
+Back to previous window size
+Switch clock and map windows 
+Activate command (-command option)
+Quit program
+# Zoom window help
+Activate new zoom settings
+Return to previous zoom settings
+Cancel change in zoom settings
+Set aspect by resizing main window
+Cycle through zoom modes 0,1,2
+Zoom in by factor 1.2
+Zoom out by factor 1/1.2 = 0.833
+Return to zoom factor = 1 (full map)
+Center zoom area on selected city or location
+Synchronize zoom operation
+# Option window help
+Activate the option
+Erase the command/parameter line(s)
+Synchronize windows or not
+Copy map to root window
+Erase map from root window
+Start/stop animation
+# Urban window help
+Use degrees, minutes, seconds, or decimal degrees
+Search/select city
+Modify city parameters
+Create new city location
+Delete city
+# End

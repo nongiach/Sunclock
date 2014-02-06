@@ -1,0 +1,13 @@
+README_pl dla Sunclock w wersji 3.xx
+------------------------------------
+Poczynaj±c od wersji 3.51 program Sunclock posiada polsk± wersjê
+jêzykow±. Aby móc w pe³ni z niej ko¿ystaæ nale¿y po instalacji programu,
+zgodnie z instrukcjami znajduj±cymi siê w pliku INSTALL (j. agnielski),
+zmieniæ plik Sunclockrc (znajduj±cy siê najprawdopodobniej w /usr/share/sunclock/)
+usuwaj±c znaki '#' przed piêcioma liniami zaczynaj±cymi siê od 'setfont'.
+W przeciwnym wypadku bêdzie zastosowana domy¶lna czcionka oparta o stronê
+kodow± ISO 8859-1 (czyli bez polskich znaków).
+
+Ze swojej strony zapraszam do odwiedzenia witryny :
+  http://frmas.free.fr/li_1.htm#_Sunclock_
+sk±d mo¿na pobraæ nowe, bardzo ³adne, mapy ¶wiata do programu sunclock.

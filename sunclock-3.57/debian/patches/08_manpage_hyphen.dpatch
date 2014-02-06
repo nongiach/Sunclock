@@ -1,0 +1,28 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 08_manpage_hyphen.dpatch by Roland Rosenfeld <roland@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Fix hyphen used as minus sign in man page.
+
+@DPATCH@
+diff -urNad sunclock~/sunclock.man sunclock/sunclock.man
+--- sunclock~/sunclock.man
++++ sunclock/sunclock.man
+@@ -625,7 +625,7 @@
+ .BI "\-citycategories " value
+ Specifies the maximal number of city categories: categories range from 1 
+ (highest catgory, i.e. major city) to some maximum number. The option
+--citycategories specifies that maximum number. It can only be used
++\-citycategories specifies that maximum number. It can only be used
+ at start-up, not at runtime. The default value is 5.
+ .TP
+ .BI "\-spotsizes " "s1|s2|s3|... (0<=si<=5, 1<=i<=citycategories)"
+@@ -635,7 +635,7 @@
+ the corresponding category of cities (rank i) will not be displayed. 
+ If there are less data than the number of city categories (5 by default), 
+ the last given data is repeated as many times as needed, e.g.
+--spotsizes 2 is equivalent to \-spotsizes 2|2|2|2|2.
++\-spotsizes 2 is equivalent to \-spotsizes 2|2|2|2|2.
+ Example: specifying \-spotsizes 0|2|0|3|0 will let appear only city
+ categories 2 and 4, but those of category 4 will appear with the symbol
+ normally allocated to cities of category 3. This is useful in combination

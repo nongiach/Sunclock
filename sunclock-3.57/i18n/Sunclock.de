@@ -1,0 +1,125 @@
+# German
+# Day names
+So
+Mo
+Di
+Mi
+Do
+Fr
+Sa
+# Months
+Jan
+Feb
+Mär
+Apr
+Mai
+Jun
+Jul
+Aug
+Sep
+Okt
+Nov
+Dez
+# Additional labels
+Position
+GMT Zeit
+Sonnenzeit
+Gesetzliche Zeit
+Länge des Tages
+Sonnenaufgang
+Sonnenuntergang
+#
+Sekunden
+Minute
+Stunde
+Tag
+Tage
+#
+Klicke auf eine Stadt
+Klicke auf eine Position
+Klicke nacheinander auf zwei Positionen
+Doppelklicke oder betätige ° für ° ' "
+#
+Taste
+Tastatur/Maussteuerung
+Abbruch
+Menü beenden
+Unbekannte Tastenzuordnung !!
+Synchro
+Schrittweite =
+Zeitverschiebung =
+#
+Städtename
+Zeitzone
+Latitude
+Longitude
+Größe
+Warnung: %s, lat = %s lon = %s%sist bereits in der Städteliste !!
+Überschreibe vorhergehenden Eintrag für %s
+#
+Option
+Ausgewählte Option aktivieren...
+Ungültige Option bzw. nicht zur Laufzeit wählbar !!
+Optionen: für ein Leerzeichen eines Eintrags <Ctrl><Space> drücken
+(einmalig)
+(periodisch, alle %d Sekunden)
+(mit starrem Himmel)
+(ohne Fensterinhalt)
+mit der folgenden, länglichen Optionsliste:
+Beginnend mit ** sind die Optionen zur Laufzeit konfigurierbar
+Berechne neues Bild...
+Sunclock hat eine Reihe interner Funktionen, auf die per Mausklick/Tastatur zugegriffen werden kann:
+# General help
+Zeige die Hilfe sowie Optionen an (H oder Mausknopf 1)
+Eingabe Erdekartendatei (F oder Mausknopf 2)
+Zoom (Z oder Mausknopf 3)
+Städteparameter
+Optionskommandofenster
+Verwende Koordinaten-Modus
+Verwende Sonnenzeit-Modus
+Verwende Abstands-Modus
+Verwende Stunden-Erweiterungs-Modus
+Verwende Modus für gesetzliche Zeit
+Verschiebe Zeit vorwärts
+Verschiebe Zeit rückwärts
+Ändere Zeitverschiebung
+Setze Zeitverschiebung auf Null zurück
+Zeichne/Lösche Nacht
+Zeichne/Lösche Sonne und Mond
+Zeichne/Lösche Meridiane
+Zeichne/Lösche Parallelen
+Zeichne/Lösche Tropische/Äquator/Polarkreise
+Öffnen ein neues Karte Fenster
+Fenster schließen
+Fenster ikonifizieren
+Kartenfenster auffrischen
+Fenstergröße auf Bildschirmgröße aufziehen
+Vorhergehende Fenster restaurieren
+Wechseln zwischen Uhr und Kartenfenster 
+Aktiviere Kommando (-command Option)
+Programm beenden
+# Zoom window help
+Neue Vergrößerung aktivieren
+Alte Vergrößerung restaurieren
+Änderung der Vergrößerung verwerfen
+Seitenverhältnis durch Fenstergrößenänderung setzen
+Zwischen Vergrößerungen 0, 1 und 2 wechseln
+Vergrößerung mit Faktor 1.2
+Verkleinerung mit Faktor 1/1.2 = 0.833
+Ursprüngliche Vergrößerung mit Faktor = 1 (gesamtes Bild)
+Vergrößerung an ausgewählter Stadt/ausgewähltem Platz zentrieren
+Vergörßerungsoperation synchronisieren
+# Option window help
+Option aktivieren
+Kommandozeile löschen
+Fenstersynchronisation an oder aus
+Aktuelles Bild als Bildschirmhintergrund
+Bildschirmhintergrund löschen
+Animation starten/stoppen
+# Urban window help
+Benutze Grade/Minuten/Sekunden oder Dezimalgrade
+Stadt suchen/auswählen
+Städteparameter ändern
+Neuen Städteeintrag anlegen
+Stadt löschen
+# End

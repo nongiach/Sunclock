@@ -1,0 +1,31 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 05_rename_manual.dpatch by Roland Rosenfeld <roland@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: rename MANUAL.emacs to MANUAL.emx
+
+@DPATCH@
+diff -urNad sunclock~/editkit/edit.c sunclock/editkit/edit.c
+--- sunclock~/editkit/edit.c
++++ sunclock/editkit/edit.c
+@@ -802,7 +802,7 @@
+ #ifdef EXTHELP
+ 	char name[NLEN];
+ #ifdef EMACS
+-	sprintf(name, "%s/%s", DOCDIR, "MANUAL.emacs");
++	sprintf(name, "%s/%s", DOCDIR, "MANUAL.emx");
+ #else
+ 	sprintf(name, "%s/%s", DOCDIR, "MANUAL.wordstar");
+ #endif
+diff -urNad sunclock~/editkit/x11_bind_em.c sunclock/editkit/x11_bind_em.c
+--- sunclock~/editkit/x11_bind_em.c
++++ sunclock/editkit/x11_bind_em.c
+@@ -81,7 +81,7 @@
+ 		switch(key) {
+ 		case XK_Tab		: word_mark(); break;			/* ^Tab mark cursor word */
+ #ifndef MINIMAL
+-		case XK_F1		: new_edit(DOCDIR"/MANUAL.emacs"); break;			/* ^F1 open emx Manual */
++		case XK_F1		: new_edit(DOCDIR"/MANUAL.emx"); break;			/* ^F1 open emx Manual */
+ #endif
+ 		case XK_F9		: new_edit(""); break;			/* ^F3 open new emx */
+ 		case XK_Home	: top(); break; 				/* ^Home bof */

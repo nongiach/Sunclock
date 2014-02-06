@@ -1,0 +1,125 @@
+# Norwegian
+# Day names
+Søn
+Man
+Tir
+Ons
+Tor
+Fre
+Lør
+# Months
+Jan
+Feb
+Mar
+Apr
+Mai
+Jun
+Jul
+Aug
+Sep
+Okt
+Nov
+Des
+# Additional labels
+Posisjon
+GMT tid
+Soloppgang
+Nasjonal tid
+Dagens lengde
+Soloppgang
+Solnedgang
+#
+sekund
+minutt
+time
+dag
+dager
+#
+Klikk på en by
+Klikk på et sted
+Klikk på to steder i kartet
+Klikk to ganger eller trykk ° for ° ' "
+#
+Tastatur
+Tastatur/Muskontroll
+Lukk vindu
+Lukk meny
+Unknown key binding !!
+Synchro
+Tidsvariabel =
+Global tidsvariabel =
+#
+City name
+Timezone
+Latitude
+Longitude
+Size
+Warning: %s, lat = %s lon = %s%salready in list of cities !!
+Overriding previous entry for %s
+#
+Option
+Activating selected option...
+Option incorrect or not available at runtime !!
+Options: strike <Ctrl><Space> for blank space within an item
+(once)
+(periodically, period %d seconds)
+(with starry sky)
+(blank root window)
+with the following rather long list of options:
+Starting from **, options are runtime configurable
+Calculating new image...
+Sunclock har endel funksjoner som man kan komme til ved bruk av musklikk eller tastaturet:
+# General help
+Vis hjelp og alternativ (H eller musklikk knapp 1)
+Henter kart (F eller musklikk knapp 2)
+Zoom (Z eller musklikk knapp 3)
+Parameters of Urban locations
+Option command window
+Bruk koordinatmodus
+Bruk soloppgangmodus
+Bruk distansemodus
+Bruk tidstilleggsmodus
+Bruk nasjonal tidssonemodus
+Endre tiden framover
+Endre tiden bakover
+Juster tidsvariabel
+Tilbakestill Global tid
+Tegn/Fjern natt
+Tegn/Fjern sol og måne
+Tegn/Fjern meridianer
+Tegn/Fjern breddegrader
+Tegn/Fjern tropisk/ekvator/arktisk sirkel
+Åpner nytt kartvindu
+Lukker vindu
+Ikonifiserer vindu
+Forny kartvindu
+Adjust window width to screen size
+Tilbake til forrige kartvindu
+Veksle tidssone og kartvindu
+Aktivér kommando (-command option)
+Avslutt program
+# Zoom window help
+Activate new zoom settings
+Return to previous zoom settings
+Cancel change in zoom settings
+Set aspect by resizing main window
+Cycle through zoom modes 0,1,2
+Zoom in by factor 1.2
+Zoom out by factor 1/1.2 = 0.833
+Return to zoom factor = 1 (full map)
+Center zoom area on selected city or location
+Synchronize zoom operation
+# Option window help
+Activate the option
+Erase the option command line
+Synchronize windows or not
+Copy map to root window
+Erase map from root window
+Start/stop animation
+# Urban window help
+Use degrees, minutes, seconds, or decimal degrees
+Search/select city
+Modify city parameters
+Create new city location
+Delete city
+# End

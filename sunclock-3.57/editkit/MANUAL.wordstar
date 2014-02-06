@@ -1,0 +1,324 @@
+------------------------------------------------------------------------------
+edx Users Manual:
+
+Copyright (C) 2002, Terry Loveall, <loveall@qwest.net>
+
+Based upon the original work ee.c of Yijun Ding, copyright 1991. His logic
+simplicity was elegant. Any problems are mine.
+
+The original work is source in the public domain and so is edx. I would
+appreciate hearing about any bug fixes or improvements.
+
+-----------------------------------------------------------------------------
+Command line options
+
+Usage: edx [-fn font] [-jump line#] [-tab skip] [-w width] [-h height]
+           [-bg color] [-fg color] [-hibg color] [-hifg color] [-cr color]
+           [-rc rcfile] [file]
+
+------------------------------------------------------------------------------
+Edx doesn't have menus, but if it did, they would look like this:
+
+File  Edit  Search  Navigation  Options  Run  Help
+--------------------------------------------------
+
+File:
+-----
+^K^F  save as:, open new file
+F2    save file and resume
+^K^S  save file and resume
+^K^W  write block to disk
+^K^R  insert file at cursor pos
+^K^D  toggle file Modified
+^K^Q  exit only if file saved/unmodified
+^K^X  exit only if file saved/unmodified
+
+Edit:
+-----
+^U    undo
+^K^U redo
+^I    insert tab char
+Tab   insert tab char
+^M    newline
+^N    newline
+Enter newline
+^P    insert next char as inline literal
+^B    reformat from cursor to end of paragraph
+^Q^L  convert marked block to lower case
+^Q^U  convert marked block to UPPER case
+^Q^T  exchange two consecutive chars
+
+^G    delete cursor char
+Del   delete cursor char
+BS    delete prev char
+^H    delete prev char
+^T    delete word
+^Y    delete line
+^Q^Y  delete to end of line
+
+F7    toggle mark block
+F8    toggle mark block
+^K^B  toggle mark block
+^K^K  toggle mark block
+^F1   mark cursor word
+
+^K^Y  Cut block to block buffer
+^K^C  Copy block to X _and_ to block buffer
+^K^V  Paste block buffer to cursor
+
+Shift-Del   Cut block to X
+^Ins        Copy block to X
+Shift-Ins   Paste from X
+
+^K^M  record macro
+^K^P  play macro
+
+Search:
+-------
+^Q^F  find
+^Q^A  find and replace
+^L    find again
+^J    goto line
+^Q^I  goto line
+
+Navigation:
+-----------
+^A    word left
+^F    word right
+^S    left
+^D    right
+^E    up
+^X    down
+^R    pgup
+^C    pgdn
+^Z    scroll up
+^W    scroll down
+up
+down
+right
+left
+PgUp
+PgDn
+^Left  word left
+^Right word right
+Home   beginning of line
+End    end of line
+^Q^S   beginning of line
+^Q^D   end of line
+^Home  beginning of file
+^End   end of file
+^Q^R   beginning of file
+^Q^C   end of file
+^Q^P   goto last pos
+
+Options:
+--------
+Ins   toggle insert mode
+F12   toggle insert mode (I have a flaky Ins/F12 key, use for your own purpose)
+^V    toggle Insert mode
+^Q^M  get right margin
+^K^T  get tab size
+^O    change modes [MFOCTBNRA]
+^OM   toggle file Modified
+^OF   toggle Fill (autowrap)
+^OO   toggle insert/Overwrite
+^OC   toggle search Case
+^OT   toggle Tab convert
+^OB   toggle marked Block (DONT use, indicator only, use ^K^B)
+^ON   toggle autoiNdent mode
+^OR   toggle record Macro (DONT use, indicator only, use ^K^M)
+^OA   toggle replace All
+
+Run:
+----
+F5    get and run cmd
+F6    get & change to dir
+F10   open rxvt term
+^K^Z  open rxvt term
+^F3   open new edx
+Alt-C xcalc
+Alt-D phone Dir
+Alt-L xcalendar
+
+Help:
+-----
+F1    show help
+^K^H  show help
+------------------------------------------------------------------------------
+
+For input, edx uses a version of the old WordStar style control key sequences;
+i.e. ^k^h or ^kh, always lower case control chars. ^kc copies marked block to
+clipboard, right mouse pastes from clipboard. ^ky deletes marked block to
+block buffer, ^kv copies from from block buffer to cursor position.
+
+Basic navigation is on the left of the keyboard:
+
+  Q W E R      ^E    ^W  ^R
+   A S D F   ^S  ^D             ^A   ^F
+    Z X C      ^X    ^Z  ^C
+
+    ^E - up
+    ^X - down
+    ^D - right
+    ^S - left
+
+    ^W - scroll down 1 line
+    ^Z - scroll up 1 line
+
+    ^R - page up
+    ^C - page down
+
+    ^F - word right
+    ^A - word left
+
+    ^Q^D - goto end of line
+    ^Q^S - goto start of line
+
+    ^Q^R - goto start of file
+    ^Q^C - goto end of file
+
+    ^Q^F - find
+    ^Q^A - find and replace
+
+Once you learn the 'magic diamond' of EXDS with ^Q extensions, function keys
+and mouse become irrelevant. Following are the rest of the key commands:
+
+    ^B - word wrap text until the next double newline
+    ^G - delete character under cursor
+    ^H - delete character left of cursor
+    ^I - insert tab char
+    ^J - goto line
+    ^K - prefix for file/block operations
+    ^L - repeat last find
+    ^M - insert newline
+    ^N - insert newline
+    ^O - prefix for display and change mode flags
+    ^P - inline literal
+    ^T - delete from cursor to start of next string
+    ^U - undo
+    ^V - toggle insert/overwrite mode
+    ^Y - delete cursor line
+
+    ^QI - goto line
+    ^QL - refresh screen
+    ^QM - get new right margin
+    ^QY - delete from cursor to end of line
+
+    ^KB - toggle mark block
+    ^KC - copy marked block to selection
+    ^KD - exit if file not modified
+    ^KF - open new file
+    ^KH - help
+    ^KK - toggle mark block
+    ^KM - record macro
+    ^KP - play macro
+    ^KQ - exit if file not modified
+    ^KR - read a file and paste into cursor position
+    ^KS - save and continue
+    ^KT - get new tab size
+    ^KV - paste block buffer into cursor position
+    ^KW - write marked block to file
+    ^KX - exit if file not modified
+    ^KY - cut marked block to block buffer
+
+Under X the following function keys are operational:
+----------------------------------------------------
+
+   (key)     (description)                                   (same as)
+----------------------------------------------------------------------
+    F1      help                                                ^KH
+    F2      file save (if modified)                             ^KS
+    F3      open new file (prompts to save if file modified)    ^KF
+    F4      search for matching parentheses (){}[]
+    F5      prompt for and execute user command line
+    F6      get and change directory
+    F7      toggle mark block                                   ^KB
+    F8      toggle mark block                                   ^KK
+    F9      fire up a new editor with a given file name
+    F10     open an rxvt terminal in the current directory      ^KZ
+    Ins     toggle insert/overwrite                             ^V
+shf-Del     cut marked block to X clipboard
+ctl-Ins     copy marked block to X clipboard
+shf-Ins     paste from X clipboard
+    Del     delete character under cursor or marked block       ^G
+    Home    move cursor to beginning of line                    ^QS
+    End     move cursor to end of line                          ^QD
+    PgUp    move up one screen                                  ^R
+    PgDn    move down one screen                                ^C
+
+Navigation keys (arrows, Home, End, PgUp and PgDn) are operational.
+
+Shift navigation marks text. 
+
+^Home and ^End go to BOF and EOF, respectively.
+
+Control left arrow and right arrow move by word.
+
+Left mouse button click: set text cursor.
+Right mouse button click: set text cursor or scroll text.
+
+Left mouse button double click: select word under cursor.
+
+Left mouse button click and drag: 
+     marks and copies a text block to X clipboard.
+
+Middle mouse button click: paste from X clipboard.
+
+Middle mouse button drag: marks a text block.
+
+
+Modes and flags:
+----------------
+
+Changing modes of operation is performed by ^o followed by one of the
+displayed upper/lower case characters MFOCTBA. This will toggle the specific
+flag. Modes are indicated as being on by displaying their upper case
+character. The file modified M flag can be toggled off explicitly. The block
+mark B active flag indicates a complex state. Toggle it off with the block
+mark key sequences, NOT with ^oB.
+
+M : file modified               set by anything that modifies file.
+F : word wrap at text entry     toggle with ^oF
+O : overwrite                   toggle with ^oO, ^V or function key Insert
+C : search is case sensitive    toggle with ^oC
+T : expand/compress tabs        toggle with ^oT
+B : block mark active           toggle ^KB, ^KK, F7 or F8 (don't with ^oB)
+A : replace all occurences flag toggle with ^oA
+
+The editor does display tab chars as multiple spaces. Tab (0x09) chars are
+displayed as tabsize spaces. Default tab size is 4. To change tab-width to 8
+the command line is  'edx -t8'. To change from within the editor use ^KT.
+
+To go to a specified line on initial file opening, the command line is
+'edx -+507 somefile'. The minus plus sequence is required. Input a ^J to go to
+a line from within e.
+
+Turning on (F)ill mode enables wordwrap during text entry. Block reformat
+wraps the text at the right screen edge until a double newline is encounterd.
+To reformat a paragraph, place the cursor at the desired point of reformat and
+enter a ^b. To change the right margin use ^Q^M.
+
+As noted, undo and redo are available. ^U for undo, ^K^U for redo. A complete
+record of the edit session is maintained. Undoing all actions in the undo
+buffer will reset the Marked flag.
+
+X clipboard is somewhat integrated. ^K^C copies the marked block to the X
+clipboard and the right mouse button pastes from it. While ^K^Y deletes the
+marked block and copies the deleted marked block to the block buffer and ^K^V
+copies the deleted block from the block buffer to the point of the text
+cursor. Cut, copy and paste wrt the X clipboard by Shift-Del, Control-Insert
+and  Shift-Insert, respectively.
+
+Find and 'Search and Replace' will pick up any marked blocks, text under
+the cursor or user input in that order. Found text is highlighted. Set replace
+ALL flag wth ^oA option before running SAR to replace all occurences. 
+
+For general dialog entry if the first character entered is not ^H, ^C, End,
+Esc or Enter, the dialog string is discarded. End moves the cursor to the end
+of the dialog string.
+
+For a complete understanding of the operation of edx, study the code. It is the
+ultimate authority on operation.
+
+Remember, when all else fails READ THE SCREEN.
+------------------------------------------------------------------------------

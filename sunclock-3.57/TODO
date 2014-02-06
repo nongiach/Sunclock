@@ -1,0 +1,8 @@
+TODO
+====
+
+- Implement a (Sunclocksaver , ~/.sunclocksaver) pair of config files 
+  for fancier screensaver functionality
+- Spherical representation of Earth
+- Moon phases
+- Adding other vector map formats (the xrmap data would be great...)

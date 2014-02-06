@@ -1,0 +1,143 @@
+README for Sunclock version 3.xx
+--------------------------------
+
+Sunclock is a sophisticated clock for the X Window system.  It is
+based on an earlier version by John Mackin, itself derived from the
+Suntools program by John Walker. Many possibilities of the original 
+astronomy routines are now exploited.
+
+Sunclock displays a map of the Earth and shows which portion is illuminated
+by the sun. It can commute between two states, the "clock window" and
+the "map window". The clock window displays a small map of the Earth
+and therefore occupies little space on the screen, while the "map window" 
+displays a large map and offers more advanced functions: local time
+of cities, Sun and Moon position, etc.
+
+A customizable list of cities is loaded by sunclock at start-up (and can 
+be modified interactively, as well). Using the information provided for 
+these cities, the map window can operate in five different modes:
+
+- "Legal time" mode: legal time of default time zone and GMT time are 
+  displayed.
+- "Coordinate" mode: by clicking on a city, users get coordinates 
+  (latitude, longitude) of that city, legal time and sunrise/sunset.
+- "Solar" mode: by clicking on a point of the map (either a city or 
+  another point), solar time and day length are shown.
+- "Hour Extension" mode: displays solar times from 00:00 to 23:00 in bottom
+  strip, according to the Sun position.
+- "Distance" mode: shows distances in km and miles between two arbitrary
+  locations.
+
+A further functionality is the "Progress" feature, which allows to accelerate 
+the evolution of time, so as to observe the evolution of day/night periods 
+and seasons.
+
+The sunclock package includes a vector map of the Earth (loosely
+derived from the xearth package by Kirk Lauritz Johnson), which is
+capable of building Earth maps of arbitrary sizes without losing the
+accuracy of details (within certain limits...)
+
+Meridians, Parallels, Equator, Tropics and Arctic circles can also be
+drawn. All these actions are performed through mouse clicks 
+on the map or on the bottom strip, and/or with keyboard shortcuts. 
+There is inline help available by typing 'h' or by clicking on the 
+bottom strip -- so that no further explanation should be needed. 
+Commuting between the clock and map states is obtained by typing '!' 
+or simply <Space>.
+
+By default, the Sun and Moon are also shown on the map (rather, the
+positions of Earth where Sun and Moon are at zenith are shown).
+Coordinates of meridians, parallels, cities, the names of cities can
+be displayed on the map.
+
+If you are using a monochrome display, there is an option 
+   -colorlevel <value>
+that will enable sunclock to run in monochrome mode (in that case,
+use -colorlevel 0).
+
+Under pseudocolor displays (depth <= 8), sunclock allocates private 
+colormaps as soon as they are needed; there is also a builtin machanism 
+which automatically quantizes true-color Earth maps which would have too 
+many distinct colors for Pseudocolor displays. At the moment, sunclock 
+can read .jpg, .xpm or .xpm.gz images, and also its own .vmf vector map 
+format. Other image formats have to be converted to xpm or jpg before
+being loaded - e.g. with the netpbm or with the Imagemagick package.
+
+Sunclock is internationalized and currently supports the following 
+localizations:
+  de (German), en (English), es (Spanish), fr (French), it (Italian), 
+  nl (Dutch), no (Norwegian), pl (Polish), se (Swedish), also
+not all translations are up-to-date. Using iso8859-2 encoded fonts
+is required for Polish (other currently supported languages work with 
+iso8859-1 or iso8859-15). Thus, for Polish, a special setting of the
+fonts in Sunclockrc is needed (edit the file by uncommenting the
+appropriate font settings).
+
+Sunclock versions 3.xx are released under the GPL.
+
+
+demailly@fourier.ujf-grenoble.fr
+
+==============================================================================
+
+Starting from version 3.30 on, the recommended image format is JPEG,
+(although you can still use the .xpm or .xpm.gz format as before).
+We suggest you to download (actually very nice!) Earth maps from the
+xglobe/xplanet home sites
+   http://www.radcyberzine.com/xglobe/
+   http://www.vterrain.org/Imagery/whole_earth.html
+   http://apollo.spaceports.com/~jhasting/planets.html
+A bundled package of Earth maps is also provided on
+   ftp://ftp.ac-grenoble.fr/ge/geosciences/sunclock_jpg_maps.tgz
+
+More information on geographic names, city coordinates, timezones can be 
+obtained from
+   http://gnpswww.nima.mil/geonames/GNS/
+
+==============================================================================
+
+Please check the WARNING file for more comments, especially on recent
+changes which affect sunclock's behaviour. Take also a look to CHANGES
+if you want to review all changes which occurred during the development.
+
+==============================================================================
+
+Original README
+---------------
+
+X11 version by John Mackin, <john@cs.su.oz.AU>, based on a Suntools program
+by John Walker, <kelvin@acad.uu.NET>.
+
+This program is a clock that shows which portion of the Earth's surface is
+illuminated by the Sun.  It is designed to be usually iconic, but can be
+opened for a larger display with the time updated every second and both the
+local timezone and UTC displayed.  The Suntools version had a menu that
+allowed you to speed up time, show different dates, etc., but I have
+never implemented any of that in the X version; there is some support
+for it in the code, however.
+
+The program should have been written using Xt rather than raw Xlib, and I
+tried that at first.  I couldn't get the icon window to work, though, so I
+abandoned that version.  Hence, the program does _not_ accept most Xt-style
+command line options; valid options are given in the manual page.
+
+The program has been tested on a number of different clients (MIPS, Sun,
+VAX) and servers (MIPS colour console, Sun MIT mono, NCD-16/19), under X11R3
+and R4.  If you find bugs, please report them to me, john@cs.su.oz.AU.
+
+To build the program, decide whether you want to use imake or not.  If you
+don't, link Makefile.dist to Makefile, and edit it, otherwise edit the
+Imakefile and use xmkmf.  The program uses two fonts, one for the icon
+display and one for the large window display.  The names of these fonts
+are compiled in.  The font names comes from -DBIGFONT and -DSMALLFONT
+in the Makefile.  If you are not using imake, you will need to supply
+a -DSYSV option if you are System V.  You should supply -DNEW_CTIME if
+you are using the table-driven ctime and a "struct tm" contains
+a tm_zone field.  If neither of the ways of getting the local timezone
+name works on your system, please let me know.
+
+The original Suntools program, in case you want it, was posted as Volume 1,
+Issue 79 of comp.sources.sun.
+
+This program is public domain and may be freely copied as long as the
+notices at the top of sunclock.c remain intact.

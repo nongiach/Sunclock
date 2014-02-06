@@ -1,0 +1,114 @@
+13/05/03 
+1.05 minor changes
+Fix in x11.c which increases the sensitivity of the scrollbar when a huge
+file is loaded in emx.
+Introduced Imakefile to compile 'emx', and renamed Makefile to Makefile.kit
+
+26/04/03 
+1.04 minor changes
+Modified behavior of no-edit mode. Everything is now enabled except file
+saving. Especially, key-bindings are available in no-edit mode.
+Changed mktemp() to more secure mkstemp(), following suggestion by
+Peter Dyballa.
+
+15/07/02
+1.03 release
+Reworked clreol and show_vbar to elimenate excessive flashing of scrollbar
+ during use.
+
+10/07/02
+1.02 release
+Added 3D outline to status bar and scrollbar. Modified clreol, scr_update and
+ various dialog routines to give correct display update.
+
+04/07/12
+1.01 release, maintainance release
+* The X11 versions now have a vertical scrollbar. 
+* Version 1.01 includes a buffer overflow fix by Terry Loveall, and a 
+  new -edit option (-edit 0 for NOEDIT mode, -edit 1 otherwise).
+* 'Write file' asks for a new name even when the main buffer is unmodified
+* The title is properly reset when a buffer is written under a new name
+
+21/05/12
+1.00 release, first public annoucement.
+* Turned on  flag[CHG]=1  in chg_case routine, when -- and only when -- a
+  modification occurs.
+* Some more fixes by Terry Loveall. Seems now ready for a public release.
+
+18/05/12
+0.72 release
+* Made change in goto_x() routine, following a suggestion by
+  Terry Loveall.
+
+16/05/12 (additions by J-P Demailly)
+0.71 release. 
+* Improved search, search&replace and repeat routines
+ ("repeat" remembers which type of search/search&replace was made; 
+ reverse search is enabled; search&replace can perform repeated or 
+ throughout replacements). 
+* Fixed several annoying display bugs related to the show_scr procedure 
+  (termcap version). Added BOXCURS option (so as to get optionally a 
+  box-cursor in the X11 version).
+* Fixed incorrect file path calls in 'rc.example'; now parsing the
+  argv parameters for a new rcfile before actually parsing the default
+  file.
+
+05/05/12 (additions by J-P Demailly)
+0.70 release. 
+* New compile switches have been introduced so that 4 distinct 
+  binaries can be produced:
+  edt, emt (termcap version, with wordstar/emacs bindings respectively)
+  edx, emx (X-Window version, with wordstar/emacs bindings respectively)
+* Left and right justification routines have been optionally implemented 
+  (use -DJUSTIFY switch)
+* Added F9 binding to fire new editor session in a new window.
+
+04/16/02 (changes by J-P Demailly)
+* BUGFIX: Fixed crash problem occuring when clicking at an empty buffer of 
+  on the last word of the buffer.
+* Emacs bindings are provided besides the Wordstar bindings (compile switch).
+* Removed hardcoded buffer limitations
+* Improved X routines and implemented paste procedure with Button 2
+* Added possibility of having private key bindings through an rc file
+* Added bak file handling
+* Added transpose char routine
+* Added support for Greek letters (with TeX/LaTeX in mind)
+
+04/02/02
+* BUGFIX: Limited mouse moveto x range to positive numbers, preventing program
+  lockup.
+* Updated edx help screen to reflect recent changes.
+* Added Makefile.lcc to compile 20k mye binary. 
+* Use 'cl -DMSVC -Ox mye.c' on MSVC for 55k mye binary.
+
+04/01/02
+* Retrofit all edx improvements into mye. 
+* Update users manual at the beginning of mye.c. 
+* Update HELP_STR to new mye.c configuration.
+
+03/31/02
+Added suspend autoindent to paste_primary from X selection.
+
+03/29/02
+* Added TODO file.
+* Added autoiNdent flag and support code to key_return.
+* Added convert marked block to UPPER/lower case.
+
+03/28/02 
+* Updated MANUAL and README.
+* Moved SYSTEM and cd functions from edx.c to eeng.c. 
+* Cleaned up display for lines longer than screen_width. 
+* Reworked macro recording and playback. 
+* Removed unused function show_status. 
+* Restructured status line. 
+* Improved goto last position logic. 
+* Reworked block_fill to match improved display.
+
+03/24/02 
+BUGFIX: removed memset write-out-of-bounds GPF in function 'drstr'.
+
+03/24/02 
+* Improved dialog character editing. 
+* Added change directory dialog,
+* Added xcalc and xcalendar hot keys.
+* Added block format undo/redo.

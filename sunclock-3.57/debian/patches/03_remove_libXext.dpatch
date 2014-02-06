@@ -1,0 +1,32 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 03_remove_libXext.dpatch by Roland Rosenfeld <roland@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: remove $(XLIB) from LOCAL_LIBRARIES in Imakefiles. This removes
+## DP: unnecessary libXext from binaries.
+
+@DPATCH@
+diff -urNad sunclock~/Imakefile sunclock/Imakefile
+--- sunclock~/Imakefile
++++ sunclock/Imakefile
+@@ -58,7 +58,7 @@
+      readvmf.c readxpm.c readgif.c readjpeg.c readpng.c
+ OBJS=sunclock.o astro.o widgets.o tildepath.o dirlist.o \
+      readvmf.o readxpm.o readgif.o readjpeg.o readpng.o
+-LOCAL_LIBRARIES=$(XLIB) $(XPMLIBDIR) -lXpm $(ZLIBDIR) -lz \
++LOCAL_LIBRARIES=$(XPMLIBDIR) -lXpm $(ZLIBDIR) -lz \
+      $(JLIBDIR) -ljpeg -lpng -lm
+ DEPLIBS=		# I don't know what I'm doing, and I hate imake!
+ 
+diff -urNad sunclock~/editkit/Imakefile sunclock/editkit/Imakefile
+--- sunclock~/editkit/Imakefile
++++ sunclock/editkit/Imakefile
+@@ -35,7 +35,7 @@
+ 
+ CFLAGS = -O2 -fomit-frame-pointer -pipe -Wall -DTHREED -DGREEK -DJUSTIFY -DSHAREDIR="\"$(SHAREDIR)\"" -DDOCDIR="\"$(DOCDIR)\""
+ 
+-LOCAL_LIBRARIES=$(XLIB)
++LOCAL_LIBRARIES=-lX11
+ DEPLIBS=		# I don't know what I'm doing, and I hate imake!
+ 
+ SRCS=x11.c

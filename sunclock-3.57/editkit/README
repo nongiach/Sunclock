@@ -1,0 +1,331 @@
+Edt - small footprint Wordstar clone for VT100 terminals
+Emt - small footprint Emacs clone for VT100 terminals
+Edx - small footprint Wordstar clone for the X Window system
+Emx - small footprint Emacs clone for the X Window system
+
+Version 1.01, June 19, 2002
+(C) 2002 Jean-Pierre Demailly <demailly@ujf-grenoble.fr>
+
+This package is derived from the Editor Kit edx-0.56 by Terry Loveall. 
+Aside minor improvements of the editing routines (unlimited buffer size,
+left and right justification), it adds a variant of edx (aka emx) which uses
+Emacs bindings rather than Wordstar bindings. A compile switch also allows
+to produce edt/emt for VT100 consoles rather than for the X Window system.
+The editor engine is almost identical in all cases, provided by the 
+routines contained in 'edit.c'. The programs just require the raw X11 
+libraries (edx/emx), or the termcap library (edt/emt).
+
+Various compile options can be used to increase or reduce the feature set
+(see the Makefile for details).
+
+In particular, the standard compile options yield the possibility to use
+arbitrary key bindings, bound to Alt-? or Esc-!-?. They should
+be copied to /usr/share/edmtx/edxrc (resp. to /usr/share/edmtx/emxrc, etc) 
+for a system wide installation, or in $HOME/.edxrc (resp. $HOME/.emxrc, etc). 
+Check 'rc.example' to get an idea.
+
+==============================================================================
+
+Copy of original README of edx-0.56 by Terry Loveall
+----------------------------------------------------
+
+Edx - an X wrapper around an ASCII terminal editor engine.
+Copyright (C) 2002, Terry Loveall, email: <loveall@qwest.net>
+This program is released into the public domain.
+
+THIS PROGRAM COMES WITH ABSOLUTELY NO WARRANTY OR BINARIES. COMPILE AND USE 
+AT YOUR OWN RISK.
+
+To build: run 'make', copy the resulting binary named edx to some place in
+your path or run it in the build directory with './edx'.
+
+Please send any questions, bug fixes or improvements to the above email.
+------------------------------------------------------------------------
+
+                   ASCII Text Editor to X Conversion
+                        and theory of operation
+
+The purpose of the edx.c/eeng.c package is a proof of concept for converting a
+'standard' ASCII terminal based text editor to the GUI X windows.
+
+Using a text editor as a native window application enables the user to have 
+multiple applications open simultaneously on screen. Yet the available X text
+editors have always left something to be desired. Usually an incomplete or 
+hostile UI coupled with one or more of the following: written in C++
+preventing easy modification, over-sized binaries which are slow to load and
+respond or just plain buggy code.
+
+In the interest of attempting to alleviate some, if not all, of the above
+complaints, the edx text editor is presented. It is composed of two files:
+edx.c which provides the direct interface to X windows, and eeng.c which
+provides a relatively simple basic text editor engine. 
+
+Edx.c description:
+
+The functions provided by edx.c are a generic set designed to provide all 
+necessary functions that are not inherent to the text editor engine.
+
+Edx.c provides the basic X windows initialization code, character/mouse input,
+character/string output, cursor positioning, X clipboard selection and the
+main event driven executive loop.
+
+These are:
+
+Cursor:
+
+void gotoxy(int horz,int vert);
+void cursor_draw(unsigned long color);
+void draw_cursor();
+void undraw_cursor();
+
+Character:
+
+void drawstring(char *str, int len);
+void cputs(char *prntstr);
+int putch(char chr);
+void clreol();
+void highvideo();
+void lowvideo();
+void clrscr();
+
+Window support:
+
+void bell();
+void update();
+void sig_handler(int);
+void font_height(void);
+
+X clipboard selection
+
+int paste_primary(int win, int property, int Delete);
+int request_selection(int time);
+char *mrealloc(char *s, int len);
+void set_selection();
+void send_selection(XSelectionRequestEvent * rq);
+void moveto();
+void do_paste();
+void do_select(int delete);
+
+App Initialization and execution:
+
+void init(int argc,char *argv[]);
+void handle_key(char *astr, int skey, int state);
+int main(int argc,char *argv[]);
+
+--------------------------
+Terminal X app conversion:
+
+Converting an ASCII text editor, that runs in a terminal environment, to an
+event driven windowed GUI app is fairly straight forward in concept.
+
+The analysis results in a separation of functions into window dependent and
+window independent.
+
+For window dependent functions, analysis produces the following 6 categories:
+
+1. Window creation and application initialization.
+2. Executive loop and function dispatch.
+3. Window support.
+4. Character display
+5. Cursor management
+6. X clipboard/selection
+
+A potential 7th category, dialogs, is not included in X for the sake of
+program simplicity. Dialogs are presented and controlled in the context of the
+ASCII status bar by the editor engine.
+
+1. Window creation and application initialization:
+
+The function 'main(argc, argv)' is where window creation and initialization is
+controlled. The sequence is as follows:
+
+    disconnect from the console
+
+    call init:
+      open the display
+      setup to gracefully respond to exit requests from X
+      establish window manager hints data structure
+      setup font(s)
+      setup window dimensions
+      initialize clreol string to all blanks
+      create the only window
+      setup window hints
+      setup window class resource names
+      notify X on how to force the app to exit
+      specify accepted XEvent loop events
+      make the window real by mapping it
+      create the Graphic Context for drawing purposes
+      allocate required colors
+      apply colors to window
+      set the font
+
+    App init in main()
+      get command line options
+      open a (possibly) named file for editing
+      request/create WM_PROTOCOLS atom
+      set up the signal handler response
+      display the initial cursor
+
+2. Executive loop and function dispatch:
+
+At the successful completion of window creation and app initialization, 
+execution enters the main() event loop, where requested events are decoded and
+dispatched to the appropriate functions.
+
+The event categories decoded are as follows:
+
+    Expose
+    MotionNotify
+    ButtonPress
+      Button1
+      Button2
+      Button3
+    ButtonRelease
+      Button1
+      Button2
+      Button3
+    KeyPress
+    ConfigureNotify
+    ClientMessage
+    DestroyNotify
+
+The four event categories of concern are ButtonPress, ButtonRelease,
+MotionNotify and KeyPress. 
+
+The button and motion events call the editor functions which:
+
+    set the cursor position, 
+    select text with highlights and 
+    insert text from a buffer.
+
+KeyPress calls one of several key decoding functions that are mode specific in
+the text editor engine. These modes correspond to:
+
+    normal editor cursor and text input, 
+    file and search string dialogs and 
+    option settings.
+
+3. Window support:
+
+Window support amounts to only 5 functions that are broken out to improve
+readability. They are:
+
+    bell: make noise for incorrect input.
+    update: redraw the screen.
+    sig_handler: handle signal events from the OS.
+    font_height: calculate font height.
+
+4. Character display:
+
+    drawstring is the basic text output.
+    cputs outputs an ASCIIZ string.
+    putch just outputs one char.
+    lowvideo sets output to normal mode.
+    highvideo sets output to highligted mode.
+    clreol erases from the current output position to the right edge.
+    clrscr erases the entire window.
+
+5. Cursor management:
+
+    gotoxy positions the cursor relative to the upper left window corner.
+    cursor_draw draws a cursor at current location in the specified color.
+    draw_cursor draws a cursor in the foreground color.
+    undraw_cursor draws a cursor in the background color.
+
+6. X clipboard/selection:
+
+    mrealloc manages the buffer size for X selection
+    paste_primary sequentially feeds chars to handle_char for pasting
+    request_selection requests the current selection from XA_CUT_BUFFER0 if any
+    set_selection processes and sends the marked block to XA_CUT_BUFFER0
+    send_selection posts an event saying selection is available
+	moveto mouse support convenience function for multiple calls
+	do_paste paste function for both keyboard and mouse
+	do_select also for both keyboard and mouse
+
+-------------------
+Eeng.c description:
+
+Eeng.c provides window independent functions and is derived from a functional
+ASCII text editor in a non-windowed environment. Changes made to eeng.c amount
+to converting the following functions from loop form to single pass character
+decoding: 
+
+main executive:
+    main_exec: dispatch ASCII characters and function keys for processing.
+
+all ASCII text dialogs:
+    file_save: file open/save/new.
+    goto_line: request specified line number to goto.
+    goto_col: request goto column in current line
+    goto_search: request string to search for.
+    goto_replace: request search string for search&replace operation.
+    replace_with: request replace string for search&replace operation.
+    ask_replace: confirm replacement (Y/N/Esc/!) for search&replace operation.
+    tab_size: request new tab size.
+    window_size: request new right margin for block reformat.
+    block_read: request file name to insert at current position.
+    block_write: request file name to write marked block to.
+
+select and set options:
+    show_mode: 
+
+An additional change to the text dialogs was to use a generic string input
+with prompt format and a callback. The callback provides specific processing
+of the input string.
+
+The change to a windowed environment also required replacing all terminal I/O
+with equivalent X functions. This code did not change, but rather was replaced
+by the same named X functions. These functions are comprised of the X cursor
+and character groups. The major source difference was specifying function and
+control keys from <X11/keysymdef.h>.
+
+-----------------------------
+Basic eeng.c code structures:
+
+The center of the editor engine is the char* pointer 'line_start'. All 
+operations center around it. cur_pos is calculated by 'line_start+x_offset'.
+Conversion from screen x co-ordinate is accomplished with 'get_tru'. Moving
+around within the text file always requires moving line_start and counting
+EOLs.
+
+Text display counts back 'y' number of lines to generate a complete screen in
+the function 'show_scr'. There, the left margin display offset 'lxo' is used 
+to determine the start of each display line. lxo is primarily maintained by
+cursor_left and cursor_right functions.
+
+Text insertion and deletion is provided by the function 'file_resize', which,
+when destination address is greater than source, opens a gap for insert
+operations, or deletes when destination address is less than source. Undo
+recording basically monitors 'file_resize' plus a few special cases such as
+block_fill and others.
+
+Main program execution is controlled by the function 'main_exec' which is 
+basically just a conditional state test to select the proper 'switch(key)'
+function from one of key_normal, key_control, ctrlk_key, ctrlq_key, func_key
+and key_alt. Each one of these decodes for a specific set of keys and the
+key state from the global key event data structure 'keve'. From there, the
+individual key functions are invoked.
+
+X windows just passes basic key values and keyboard state. The difference
+between an ASCII 'A' and a control 'A' is only in the bit indicating the
+control key is pressed. The bad part is the program has to decode this in
+order to respond reasonably. The good part is the program gets to decode this
+in order to respond reasonably and controls _all_ decoding. If you do not like
+the way edx operates you _can_ change it.
+
+Marked block operation is comprised of flag[BLK], the char pointer 'mk' and
+cur_pos. If flag[BLK] is set, only then can you have a marked block.
+
+File operations are basically treated as block operations, and do very
+conventional file I/O.
+
+External program execution:
+
+SYSTEM forks a new process to run '/bin/sh $@'
+gorun invokes a dialog to get a command line from the user to execute
+newedx invokes a new instance of edx
+mterm opens an rxvt terminal in the current directory
+
+For more detailed operation of the edx editor see the files 'MANUAL' and
+'eeng.c'.

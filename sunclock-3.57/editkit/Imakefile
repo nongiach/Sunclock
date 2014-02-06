@@ -1,0 +1,67 @@
+XCOMM Should install to /usr or /usr/local ??
+  #ifndef DESTDIR
+    DESTDIR=/usr
+  #endif
+
+XCOMM Name of man subdirectory of DESTDIR:
+  #ifndef MANDIR
+    MANDIR=/X11R6/man/man1
+  #endif
+
+XCOMM Name of bin subdirectory of DESTDIR: /X11R6/bin or maybe just  /bin
+  #ifndef BINDIR
+    BINDIR=/X11R6/bin
+  #endif
+
+XCOMM Name of share subdirectory of DESTDIR_XRMAP:
+  #ifndef SHAREDIR
+    SHAREDIR=$(DESTDIR)/share/editkit
+  #endif
+
+XCOMM Name of DOCDIR's subdirectories of DESTDIR:
+  #ifndef DOCDIR
+    DOCDIR=/X11R6/lib/X11/doc
+  #endif
+  #ifndef DOCHTMLDIR
+    DOCHTMLDIR=/X11R6/lib/X11/doc/html
+  #endif
+
+XCOMM
+XCOMM Normally -- except for new architectures -- you should be done there.
+
+XCOMM
+XCOMM Compile options:
+XCOMM
+
+CFLAGS = -O2 -fomit-frame-pointer -pipe -Wall -DTHREED -DGREEK -DJUSTIFY -DSHAREDIR="\"$(SHAREDIR)\"" -DDOCDIR="\"$(DOCDIR)\""
+
+LOCAL_LIBRARIES=-lX11
+DEPLIBS=		# I don't know what I'm doing, and I hate imake!
+
+SRCS=x11.c
+OBJS=x11.o
+
+ComplexProgramTarget(emx)
+
+x11.o:
+	ln -sf MANUAL.emacs emx.man
+	$(CC) $(CFLAGS) -DEMACS -o x11.o -c x11.c
+
+install.man::
+	if [ -r $(DESTDIR)$(MANDIR)/emx.1.gz ] ; \
+	   then gzip -f $(DESTDIR)$(MANDIR)/emx.1 ; fi
+	if [ -r $(DESTDIR)$(MANDIR)/emx.1x.gz ] ; \
+	   then gzip -f $(DESTDIR)$(MANDIR)/emx.1x ; fi
+
+install::
+	mkdir -p $(SHAREDIR)
+	cp -f rc.example $(SHAREDIR)/rc.common
+	cd $(SHAREDIR); ln -sf rc.common emxrc
+	cp -f README $(SHAREDIR)
+
+clean::
+	rm -f core *~ emx.man
+
+realclean:: clean
+	rm -f Makefile
+

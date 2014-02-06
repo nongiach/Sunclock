@@ -1,0 +1,287 @@
+The VMF format is a convenient ASCII vector map format which has been 
+designed to work with sunclock. It has been originally inspired by the
+algorithms used by xearth ((C) Kirk Lauritz Johnson) to encode Earth 
+regions - however, many changes have been introduced later, so that not 
+much of the original settings remain ...
+
+We now come to the precise VMF specifications
+
+=============================
+INITIAL SIGNATURE OF THE FILE
+=============================
+
+>>>   %!VMF is the initial signature for the format
+
+========
+COMMENTS
+========
+
+Any character % indicates a comment until a newline character is found.
+Comments can be included anywhere (in general at the beginning of a new line.)
+
+======
+COLORS
+======
+
+The first data to be specified at the top of the VMF file should be a 
+list of colors, either in the form explicit RGB values (#rrggbb 
+where rr, gg, bb are 2 place hexadecimal values standing respectively 
+for red, green, blue in the range 0..255) or conventional names of 
+colors, in the format understood by the XAllocNamedColor() Xlib routine.
+Each color occupies one line, and the end of the list is indicated by a
+semicolon ;
+
+Then come a default color, indicated by its index in the range
+0 .. num_colors. This is the color which will be used if there is no 
+other match from the list of colors.
+ 
+The next data are the palette values, given in the form  
+(color --> list of codes):
+
+>>>   c0  j1 j2 j3 ...
+>>>   c1  k1 k2 ...
+>>>   c2  l1 l2 l3 l4
+>>>   c4  ...
+>>>   (etc)
+>>>   cN  u1 u2 ...
+>>>   ;
+
+Do not forget the final semicolon to indicate that the palette values are 
+complete. The meaning of this is that codes j1 j2 j3 will be attributed 
+color 0 (first listed color), codes k1 k2 will be attributed color 1 
+(second listed color), etc. All c* values should be in the range
+0 .. num_colors-1
+
+The next value is the "background value", that is the color code which will
+be affected to all pixels, before the codes are modified by drawing objects 
+on the map (thus initially the screen is entirely filled with this color).
+
+====================
+RANGE OF COORDINATES
+====================
+
+Follows a line starting with the keyword "range" and indicating four 
+float values:
+
+>>>   range  <phi_min> <phi_max> <theta_min> <theta_max>
+
+which sets the range in which the latitude phi and longitude vary, e.g. :
+>>>   range  -90.0 90.0 -180.0 180.0
+
+=======================
+OPTIONAL OPTIONS / DATA
+=======================
+
+Then come a number of optional options and flags and arrays of curves /
+filled areas / text labels in any succession. The positions are specified
+by arrays of coordinate values, given as pairs (phi, theta) of latitude 
+and longitude of points on Earth in decimal degrees, with -90 <= phi <= 90
+and (ususally) -180 <= theta <= 180 (the latter is not absolutely 
+required since longitudes are taken mod 360 degrees). They are just
+Such arrays are meant to represent piecewise linear curves, which can be
+either open or closed, filled as regions or just represented as continuous
+lines. The syntax is as follows
+
+>>>   #<index> <color_value>
+>>>   phi1 theta1  phi2 theta2  phi3 theta3 ...
+>>>   ;
+
+where <index> is an arbitrary nonnegative integer (normally the actual
+rank of the curve by increasing order in the file, but the VMF format
+does not check this), and <color_value> is an arbitrary (positive or 
+negative) integer. The end of the array of coordinates is indicated by
+a semicolon (usually starting a new line). In between, the coordinates
+are just float values separated by blank spaces or new lines (no 
+parentheses nor commas should be used).
+
+===============
+DRAWING OPTIONS
+===============
+
+The drawing options (to be set before a curve or filled area is started) are
+
+>>>   fillmode 2       % fill curves
+>>>   closedcurves     % close the curves before filling
+
+Other options :
+
+>>>   fillmode 0       % draw line (no filling)
+>>>   fillmode 1       % draw line (alternate algorithm)
+>>>   opencurves       % don't close the path before drawing a line
+
+>>>   zoomwidth <val>  % don't draw unless zoom.width >= value
+>>>   zoomheight <val> % don't draw unless zoom.height >= value
+
+Normally, the curves should be non-self-intersecting and traced in a
+counter-clockwise orientation (in case of a filled area, reversing the 
+orientation is equivalent to taking the opposite of the value
+<color_value> representing the color code).
+
+If a point is contained in several overlapping domains bounded by the
+specified curves, the "color value" obtained at that point is (as a 
+consequence of the filling algorithm) the sum of the <color_value>'s
+corresponding to each curve, plus the background value.
+(If there are many domains overlapping randomly, it may then be advisable
+to use powers of 2 as color values, so that the combination produces
+a result that is unique to those combinations of domains.)
+The practical limit on the code values is 2^15-1.
+
+=====
+FLAGS
+=====
+
+Sunclock sets a "vmfflag" value (default value 0xFFFFFFFF = -1) whose
+purpose is to enable/disable sections of the VMF file according to
+the vmfflag value, using an AND test. The value of the flag can be set
+e.g. as follows :
+
+>>>   flag 4
+
+Then if  vmfflag&4  is non zero, the following section will be drawn,
+otherwise it will be ignored.
+
+The zeroth order bit (i.e. &1) determines whether features which have their
+own zeroth bit set are to be drawn in clock window mode (versus map mode - 
+if the zeroth bit is not set, the feature will always be drawn, whether
+the window is in map mode or not).
+
+===========
+TEXT LABELS
+===========
+
+Finally, here is the syntax for putting text labels
+
+>>>   label 1720 14 0 -87.000 165.000
+>>>   +11 timezone
+>>>   ;
+
+This is the label of index 1719 (value irrelevant), color 14, in position 0
+(-1=on the left, 0=centered, 1=on the right), at coordinates 
+  phi=latitude=-87.0, theta=longitude=165.0
+whose string value is "+11 timezone". Multi-line labels are allowed.
+In order to disable the new line character (so that no line break
+appears, the last character of the line should be \
+Any initial blank space of each line is removed (if one insists on
+starting by a blank space, the line should start with two blank spaces).
+The label terminates when ; is met as the first character of the line.
+
+===========
+END OF FILE
+===========
+
+Not surprinsingl, the end of the file is marked by the keyword "end"
+
+
+========================
+A TYPICAL SAMPLE OF DATA
+========================
+
+%!VMF
+% Vector Map Format for Sunclock
+%
+% List of colors
+#BFEFFF % 0 LightBlue1
+#FFFACD % 1 LemonChiffon
+#FFFF69 % 2 LightYellow
+#BEB208 % 3 DarkGold
+#86CB28 % 4 YellowGreen
+#D7EB00 % 5 GreenGold
+#8CCD8C % 6 LightGreen3
+#CD7054 % 7 Salmon3
+#EE8262 % 8 Salmon2
+#DEB887 % 9 Burlywood
+#F4A460 % 10 SandyBrown
+#000000 % 11 Black
+#0000FF % 12 Blue
+#FF0000 % 13 Red
+#000000 % 14 Black
+;
+
+% Default color
+0
+
+% Palette (possibly several codes for each color: ci j1 j2 j3 ... )
+c0 0
+c1 1
+c2 2
+c3 3
+c4 4
+c5 5
+c6 6
+c7 7
+c8 8
+c9 9
+c10 10
+c11 11
+c12 12
+c13 13
+;
+
+% Background value
+1
+
+% Coordinate range (latitude, longitude)
+range -90 90 -180 180
+
+% List of closed curves of land areas & lakes
+% Set internal flag
+flag 2
+
+% Fill mode = fill areas within closed curves
+fillmode 2
+closedcurves
+
+#0 3
+ 21.364 -157.706   21.568 -157.862   21.642 -158.075   21.456 -158.211
+ 21.383 -158.017   21.252 -157.823 ;
+  
+#1 3
+ 21.159 -156.871   21.196 -157.065   21.085 -157.279   21.103 -157.065
+ 21.048 -156.871
+;
+    
+
+% Fill mode = fill areas within closed curves
+fillmode 2
+closedcurves
+
+#0 3
+ 21.364 -157.706   21.568 -157.862   21.642 -158.075   21.456 -158.211
+ 21.383 -158.017   21.252 -157.823 ;
+  
+#1 -4
+ 21.159 -156.871   21.196 -157.065   21.085 -157.279   21.103 -157.065
+ 21.048 -156.871
+;
+    
+%% Note : putting 0 as color is equivalent to disabling the curve)
+
+% Fill mode = draw open curves
+fillmode 0
+opencurves
+
+#1565 13
+ 90.000 -157.512   70.964 -157.512
+ ;
+ 
+#1566 13
+ 90.000 -142.503   79.997 -142.503   69.972 -142.503
+;
+
+% Write a few labels (with flag = 9)
+
+flag 9
+label 1708 14 0 -87.000 0.000
+0
+;
+label 1709 14 0 -87.000 15.000
++1
+;
+label 1710 14 0 -87.000 30.000
++2
+;
+label 1711 14 0 -87.000 45.000
++3
+;
+    
+end

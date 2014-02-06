@@ -1,0 +1,576 @@
+# The format of this file is:
+#
+# <one or several options per line> 
+#
+# where each option is of the form
+# option: parameters
+# or
+# -option1 parameters -option2 parameters ...
+#
+# If one of the parameters requires a blank space, but is considered
+# to be a single parameter, use the  character as a replacement of
+# the blank space (combination of keys <Ctrl>Q <Ctrl>_ under emacs)
+#
+# (The same apply in the option widget, with <Ctrl><Space> instead)
+#
+# The format for cities is
+# addcity: importance:cityname:latitude:longitude:timezone
+#
+# The importance is a positive integer value, with
+# 1 = major capital city
+# 2 = important city
+# 3 = less important city, etc...
+# 0 is meant to hide a city, even though its coordinates are memorized
+#
+# The latitude and longitude should be signed floating point numbers,
+# with -90 < lat <= 90  and  -180 < lon <= 180
+# A negative latitude should be used for places south of the equator
+# and a negative longitude should be used for places west of the prime
+# meridian.
+
+
+#mapmode: L
+#language: en
+#city: Washington
+#map
+#mapimage: /usr/share/sunclock/earthmaps/jpeg/caida.jpg
+#tropics
+#twilight
+#-tropics -tropiccolor lavender
+
+# Polish charset for ISO 8859-2 encoding.
+# proceed similarly for other languages
+# use a comma separated list of languages, e.g. pl,cz,hu
+setfont: menu|-misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-2|pl
+setfont: clockstrip|-misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-2|pl
+setfont: mapstrip|-misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-2|pl
+setfont: city|-misc-fixed-medium-r-normal--10-100-75-75-c-60-iso8859-2|pl
+setfont: coord|-misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-2|pl
+
+addcity 1|London|51.508|-0.183|GMT0BST,M3.5.0,M10.5.0
+addcity 1|Moscow|55.750|37.700|MSK-3MSD,M3.5.0,M10.5.0
+addcity 1|NewDelhi|28.900|77.217|IST-5:30
+addcity 1|NewYork|40.752|-73.994|EST5EDT
+addcity 1|LosAngeles|34.054|-118.241|PST8PDT
+addcity 1|MexicoCity|19.467|-99.150|CST6CDT,M5.1.0/2:00,M9.5.0/2:00
+addcity 1|SaoPaulo|-23.567|-46.633|BRT3BRST,M10.2.0/0:00,M2.3.0/0:00
+addcity 1|Cairo|31.250|31.050|EST-2EDT1,121,274
+addcity 1|Bombay|18.967|72.833|IST-5:30
+addcity 1|Calcutta|22.533|88.367|IST-5:30
+addcity 1|Tokyo|35.683|139.733|JST-9
+addcity 1|Beijing|39.917|116.383|CST-8
+addcity 1|Sydney|-33.917|151.283|EST-10EST,M10.5.0/2:00,M3.5.0/3:00
+
+addcity 2|Paris|48.837|2.337|MET-1METDST,M3.5.0,M10.5.0
+addcity 2|Berlin|52.533|13.417|MET-1METDST,M3.5.0,M10.5.0
+addcity 2|Rome|41.867|12.617|MET-1METDST,M3.5.0,M10.5.0
+addcity 2|Madrid|40.417|-3.700|MET-1METDST,M3.5.0,M10.5.0
+addcity 2|Athens|37.967|23.733|EET-2EETDST,M3.5.0,M10.5.0
+addcity 2|Budapest|47.433|19.250|CET-2CDT,M3.5.0,M10.5.0
+addcity 2|Sofia|42.667|23.300|EET-3EDT,M3.5.0,M10.5.0
+addcity 2|Reykjavik|64.130|-21.937|GMT0
+addcity 2|Oslo|59.917|10.750|MET-1METDST,M3.5.0,M10.5.0
+addcity 2|Stockholm|59.583|18.100|MET-1METDST,M3.5.0,M10.5.0
+addcity 2|Helsinki|60.167|24.883|EET-2EETDST,M3.5.0,M10.5.0
+addcity 2|Geneva|46.233|6.067|MET-1METDST,M3.5.0,M10.5.0
+addcity 2|Warsaw|52.583|21.083|CET-2CDT,M3.5.0,M10.5.0
+addcity 2|SaintPetersburg|59.950|30.333|MSK-3MSD,M3.5.0/2:00,M10.5.0/3:00
+addcity 2|Tashkent|41.333|69.300|UZT-5
+addcity 2|Alma-Ata|43.230|76.880|ALMT-6ALMST,M3.5.0/0:00,M10.5.0/0:00
+addcity 2|Irkutsk|52.200|104.300|IRKT-8IRKST,M3.5.0/2:00,M10.5.0/3:00
+addcity 2|Vladivostok|43.100|+131.783|VLAT-10VLAST,M3.5.0/2:00,M10.5.0/3:00
+addcity 2|Baghdad|33.233|44.367|AST-3ASST,J91/3:00,J274/4:00
+addcity 2|Tehran|35.750|51.500|IRT-3:30IRST,J80/0:00,J266/0:00
+addcity 2|Riyadh|24.517|46.783|AST-3
+addcity 2|Madras|13.000|80.183|IST-5:30
+addcity 2|Bangkok|13.833|100.483|TST-7
+addcity 2|Kathmandu|27.817|85.350|NPT-5:45
+addcity 2|Manila|14.617|+121.000|PHT-8
+addcity 2|KualaLumpur|3.133|101.700|PST-8
+addcity 2|Brunei|4.950|114.937|BNT-8
+addcity 2|Jakarta|-6.183|106.833|PST-7
+addcity 2|HongKong|22.250|114.166|CST-8
+addcity 2|Casablanca|33.533|-7.683|GMT0
+addcity 2|Alger|36.700|3.217|CET-1
+addcity 2|Tunis|36.850|10.217|CET-1
+addcity 2|N'Djamena|12.140|15.040|WAT-1
+addcity 2|Beirut|33.900|35.467|CET-2CDT,M3.5.0,M10.5.0
+addcity 2|Monrovia|6.250|-10.350|GMT0
+addcity 2|Timbuktu|16.800|-3.000|GMT0
+addcity 2|Bamako|12.650|-8.000|GMT0
+addcity 2|Nairobi|-1.283|36.817|EAT-3
+addcity 2|Brazzaville|-4.200|15.300|WAT-1
+addcity 2|Djibouti|11.567|43.000|EAT-3
+addcity 2|CapeTown|-33.933|18.371|SAT-2
+addcity 2|Antananarivo|-18.520|48.300|EAT-3
+addcity 2|Adelaide|-34.767|138.537|CST-9:30CST,M10.5.0,M3.5.0
+addcity 2|Darwin|-12.420|130.837|CST-9:30
+addcity 2|Perth|-31.941|115.965|WST-8
+addcity 2|Auckland|-36.883|174.750|NZST-12NZDT,M10.1.0/2:00,M3.3.0/3:00
+addcity 2|Tahiti|-17.550|-149.600|TAHT10
+addcity 2|Toronto|43.670|-79.370|EST5EDT,M4.1.0/2:00,M10.5.0/2:00
+addcity 2|Calgary|51.050|-114.083|MST7MDT
+addcity 2|Anchorage|61.167|-149.983|YST9YDT
+addcity 2|Washington|38.898|-77.009|EST5EDT
+addcity 2|Denver|39.749|-104.989|MST7MDT
+addcity 2|SaltLakeCity|40.756|-111.891|MST7MDT
+addcity 2|Chicago|41.874|-87.639|CST6CDT
+addcity 2|SanFrancisco|37.778|-122.411|PST8PDT
+addcity 2|Honolulu|21.306|-157.860|HST10
+addcity 2|Thule|76.540|-68.700|ADT4
+addcity 2|Godthab|64.200|-51.680|WGT3WGST,M3.5.6/22:00,M10.5.6/23:00
+addcity 2|Cayenne|4.900|-52.500|GFT3
+addcity 2|Bogota|4.633|-74.083|WBT5
+addcity 2|Santiago|-33.433|-70.667|CLT4CLST,M10.2.0/0:00,M3.2.0/0:00
+addcity 2|Brasilia|-15.867|-47.917|BRT3BRST,M10.2.0/0:00,M2.3.0/0:00
+addcity 2|RiodeJaneiro|-22.450|-42.717|BRT3BRST,M10.2.0/0:00,M2.3.0/0:00
+addcity 2|BuenosAires|-34.333|-58.500|ART3
+addcity 2|Lima|-12.100|-76.917|PET5
+addcity 2|Erebus|-77.457|+167.080|NZST-12NZDT,M10.1.0/2:00,M3.3.0/3:00
+
+addcity 3|Aachen|50.784|6.053|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Aberdeen|57.207|-2.209|GMT0BST,M3.5.0,M10.5.0
+addcity 3|Abilene|32.451|-99.731|CST6CDT
+addcity 3|Akron|41.083|-81.512|EST5EDT
+addcity 3|Albany|42.650|-73.750|EST5EDT
+addcity 3|Albuquerque|35.084|-106.651|MST7MDT
+addcity 3|AliceSprings|-23.808|133.901|CST-9:30
+addcity 3|Allentown|40.603|-75.468|EST5EDT
+addcity 3|Altoona|40.515|-78.401|EST5EDT
+addcity 3|Amarillo|35.208|-101.834|CST6CDT
+addcity 3|Amsterdam|52.367|4.900|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|AnnArbor|42.283|-83.748|EST5EDT
+addcity 3|Antwerp|51.171|4.406|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Archenhold-Sternwarte|52.483|13.483|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Arlington|38.867|-77.117|EST5EDT
+addcity 3|Asheville|35.595|-82.557|EST5EDT
+addcity 3|Ashland|38.477|-82.640|EST5EDT
+addcity 3|Atlanta|33.753|-84.394|EST5EDT
+addcity 3|AtlanticCity|39.359|-74.431|EST5EDT
+addcity 3|Augusta|33.472|-81.967|EST5EDT
+addcity 3|Augusta|44.315|-69.775|EST5EDT
+addcity 3|Austin|30.269|-97.744|CST6CDT
+addcity 3|Bakersfield|35.375|-119.022|PST8PDT
+addcity 3|Baltimore|39.293|-76.612|EST5EDT
+addcity 3|Bangor|44.804|-68.772|EST5EDT
+addcity 3|Barcelona|41.383|2.150|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|BatonRouge|30.449|-91.183|CST6CDT
+addcity 3|BattleCreek|42.316|-85.180|EST5EDT
+addcity 3|Batumi|43.667|40.000|EST-5EDT
+addcity 3|BayCity|43.601|-83.888|EST5EDT
+addcity 3|Beaumont|30.089|-94.103|CST6CDT
+addcity 3|Belfast|54.583|-5.833|GMT0BST,M3.5.0,M10.5.0
+addcity 3|Bellingham|48.759|-122.477|PST8PDT
+addcity 3|BentleyWA|-31.979|115.815|WST-8
+addcity 3|Berkeley|37.869|-122.271|PST8PDT
+addcity 3|Bethlehem|40.621|-75.376|EST5EDT
+addcity 3|Billings|45.783|-108.501|MST7MDT
+addcity 3|Biloxi|30.397|-88.883|CST6CDT
+addcity 3|Binghamton|42.101|-75.913|EST5EDT
+addcity 3|Birmingham|33.517|-86.810|CST6CDT
+addcity 3|Bismarck|46.806|-100.788|CST6CDT
+addcity 3|Bloomington|40.483|-88.993|CST6CDT
+addcity 3|Boise|43.619|-116.199|MST7MDT
+addcity 3|Bonn|50.667|7.100|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Bordeaux|44.833|-0.583|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Boston|42.357|-71.057|EST5EDT
+addcity 3|BowlingGreen|36.995|-86.442|CST6CDT
+addcity 3|Bratislava|48.167|17.117|CET-2CDT,M3.5.0,M10.5.0
+addcity 3|Brattleboro|42.852|-72.563|EST5EDT
+addcity 3|Brest|48.383|-4.483|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Bridgeport|41.180|-73.189|EST5EDT
+addcity 3|BrisbaneQld|-27.500|153.000|EST-10
+addcity 3|Brockton|42.084|-71.024|EST5EDT
+addcity 3|Brownsville|25.902|-97.499|CST6CDT
+addcity 3|Brussels|50.839|4.637|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Buffalo|42.881|-78.873|EST5EDT
+addcity 3|Burlington|44.476|-73.213|EST5EDT
+addcity 3|Butte|46.018|-112.536|MST7MDT
+addcity 3|Buxton|35.263|-75.561|EST5EDT
+addcity 3|Cambridge|52.167|0.100|GMT0BST,M3.5.0,M10.5.0
+addcity 3|Cambridge|42.367|-71.106|EST5EDT
+addcity 3|Camden|39.945|-75.121|EST5EDT
+addcity 3|CanberraACT|-35.240|149.120|EST-10EST,M10.5.0,M3.5.0
+addcity 3|Canton|40.797|-81.377|EST5EDT
+addcity 3|CarsonCity|39.167|-119.767|PST8PDT
+addcity 3|CedarRapids|41.967|-91.665|CST6CDT
+addcity 3|CentralIslip|40.790|-73.200|EST5EDT
+addcity 3|Champaign|40.118|-88.247|CST6CDT
+addcity 3|Charleston|32.776|-79.931|EST5EDT
+addcity 3|Charleston|38.350|-81.631|EST5EDT
+addcity 3|Charlotte|35.229|-80.846|EST5EDT
+addcity 3|Chattanooga|35.045|-85.309|EST5EDT
+addcity 3|Cheyenne|41.136|-104.819|MST7MDT
+addcity 3|Cincinnatti|39.102|-84.510|EST5EDT
+addcity 3|Cleveland|41.498|-81.697|EST5EDT
+addcity 3|Cologne|50.883|6.967|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|ColoradoSprings|38.835|-104.821|MST7MDT
+addcity 3|Columbia|38.951|-92.329|CST6CDT
+addcity 3|Columbia|34.001|-81.033|EST5EDT
+addcity 3|Columbus|32.469|-84.990|EST5EDT
+addcity 3|Columbus|39.963|-83.005|EST5EDT
+addcity 3|Concord|43.206|-71.540|EST5EDT
+addcity 3|CorpusChristi|27.797|-97.396|CST6CDT
+addcity 3|Crete|35.333|25.150|EET-2EETDST,M3.5.0,M10.5.0
+addcity 3|Dallas|32.786|-96.794|CST6CDT
+addcity 3|Davenport|41.522|-90.576|CST6CDT
+addcity 3|Dayton|39.759|-84.195|EST5EDT
+addcity 3|DaytonaBeach|29.212|-81.019|EST5EDT
+addcity 3|Decatur|39.845|-88.946|CST6CDT
+addcity 3|DesMoines|41.587|-93.617|CST6CDT
+addcity 3|Detroit|42.330|-83.049|EST5EDT
+addcity 3|DodgeCity|37.755|-100.019|CST6CDT
+addcity 3|Dublin|53.316|-6.239|GMT0BST,M3.5.0,M10.5.0
+addcity 3|Dubuque|42.499|-90.669|CST6CDT
+addcity 3|Duluth|46.782|-92.107|CST6CDT
+addcity 3|Durham|36.000|-78.912|EST5EDT
+addcity 3|EauClaire|44.809|-91.497|CST6CDT
+addcity 3|Edinburgh|55.917|-3.167|GMT0BST,M3.5.0,M10.5.0
+addcity 3|Edmonton|53.563|-113.613|MST7MDT
+addcity 3|ElPaso|31.760|-106.486|MST7MDT
+addcity 3|Elizabeth|40.662|-74.216|EST5EDT
+addcity 3|Enid|36.394|-97.876|CST6CDT
+addcity 3|Erie|42.121|-80.082|EST5EDT
+addcity 3|Eugene|44.054|-123.092|PST8PDT
+addcity 3|Eureka|40.802|-124.163|PST8PDT
+addcity 3|Evansville|37.972|-87.573|CST6CDT
+addcity 3|FallRiver|41.702|-71.155|EST5EDT
+addcity 3|Fargo|46.875|-96.788|CST6CDT
+addcity 3|Flagstaff|35.193|-111.652|MST7
+addcity 3|Flint|43.014|-83.692|EST5EDT
+addcity 3|FortSmith|35.386|-94.427|CST6CDT
+addcity 3|FortWayne|41.072|-85.141|EST5
+addcity 3|FortWorth|32.749|-97.329|CST6CDT
+addcity 3|Frankfurt|50.050|8.400|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Fresno|36.737|-119.786|PST8PDT
+addcity 3|Gadsden|34.016|-86.011|CST6CDT
+addcity 3|Gainesville|29.649|-82.322|EST5EDT
+addcity 3|Gallup|35.525|-108.742|MST7MDT
+addcity 3|Galveston|29.303|-94.795|CST6CDT
+addcity 3|Gary|41.603|-87.339|CST6CDT
+addcity 3|GillamManitoba|56.380|-94.640|CST6CDT
+addcity 3|GrandJunction|39.068|-108.565|MST7MDT
+addcity 3|GrandRapids|42.968|-85.670|EST5EDT
+addcity 3|GreatFalls|47.492|-111.306|MST7MDT
+addcity 3|GreenBay|44.513|-88.014|CST6CDT
+addcity 3|Greensboro|36.071|-79.790|EST5EDT
+addcity 3|Greenville|34.847|-82.400|EST5EDT
+addcity 3|Greenwich|51.500|-0.000|GMT0BST,M3.5.0,M10.5.0
+addcity 3|Grenoble|45.183|5.733|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Groton|42.591|-72.556|EST5EDT
+addcity 3|GuatemalaCity|14.633|-90.367|CST6CDT
+addcity 3|Gulfport|30.368|-89.093|CST6CDT
+addcity 3|Halifax|44.649|-63.574|AST5ADT
+addcity 3|Hamburg|53.600|9.933|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Hamilton|39.400|-84.563|EST5EDT
+addcity 3|Hannover|52.380|9.711|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Harare|-17.833|31.050|SAT-2
+addcity 3|Harrisburg|40.262|-76.883|EST5EDT
+addcity 3|Hartford|41.770|-72.680|EST5EDT
+addcity 3|Helena|46.593|-112.040|MST7MDT
+addcity 3|Hobart|-42.833|147.333|EST-10EST,M10.1.0,M3.5.0
+addcity 3|Holyoke|42.208|-72.610|EST5EDT
+addcity 3|Houston|29.757|-95.360|CST6CDT
+addcity 3|Huntington|38.420|-82.442|EST5EDT
+addcity 3|Huntsville|34.738|-86.589|CST6CDT
+addcity 3|Indianapolis|39.769|-86.163|EST5
+addcity 3|IowaCity|41.660|-91.531|CST6CDT
+addcity 3|Jackson|42.245|-84.406|EST5EDT
+addcity 3|Jackson|32.299|-90.185|CST6CDT
+addcity 3|Jacksonville|30.329|-81.662|EST5EDT
+addcity 3|JerseyCity|40.731|-74.066|EST5EDT
+addcity 3|Jerusalem|31.783|35.217|IST-2IDT,M3.5.0,M9.1.0
+addcity 3|Johannesburg|-26.167|28.033|SAT-2
+addcity 3|Johnstown|40.326|-78.918|EST5EDT
+addcity 3|Joplin|37.091|-94.500|CST6CDT
+addcity 3|Juneau|58.303|-134.408|YST9YDT
+addcity 3|Kalamazoo|42.291|-85.587|EST5EDT
+addcity 3|KansasCity|39.118|-94.640|CST6CDT
+addcity 3|Kenosha|42.595|-87.836|CST6CDT
+addcity 3|KensingtonNSW|-33.867|151.217|EST-10EST,M10.5.0,M3.5.0
+addcity 3|KeyWest|24.558|-81.803|EST5EDT
+addcity 3|Knoxville|35.961|-83.919|EST5EDT
+addcity 3|Lafayette|40.420|-86.894|EST5
+addcity 3|Lancaster|40.040|-76.308|EST5EDT
+addcity 3|Lansing|42.734|-84.554|EST5EDT
+addcity 3|Laredo|27.506|-99.508|CST6CDT
+addcity 3|LasVegas|36.172|-115.144|PST8PDT
+addcity 3|Lawrence|42.704|-71.169|EST5EDT
+addcity 3|Lexington|38.047|-84.496|EST5EDT
+addcity 3|Lille|50.633|3.067|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Lima|40.743|-84.106|EST5EDT
+addcity 3|Lincoln|40.816|-96.704|CST6CDT
+addcity 3|Lisbon|38.717|-9.133|WET0WETDST,M3.5.0,M10.5.0
+addcity 3|LittleRock|34.745|-92.277|CST6CDT
+addcity 3|LongBeach|33.771|-118.188|PST8PDT
+addcity 3|Longyearbyen|78.203|15.829|MET-1MET(DST),M3.5.0,M10.5.0
+addcity 3|Lorain|41.468|-82.180|EST5EDT
+addcity 3|Louisville|38.246|-85.764|EST5EDT
+addcity 3|Lowell|42.640|-71.321|EST5EDT
+addcity 3|Lubbock|33.585|-101.843|CST6CDT
+addcity 3|Lund|56.150|13.300|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Luxembourg|49.617|6.150|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Macon|32.837|-83.627|EST5EDT
+addcity 3|MacquarieIsland|-54.500|158.950|NZT-12NZS,M10.1.0,M3.2.0
+addcity 3|Madison|43.073|-89.382|CST6CDT
+addcity 3|Managua|13.167|-86.267|CST6
+addcity 3|Manchester|42.991|-71.461|EST5EDT
+addcity 3|Marseille|43.283|5.367|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Marshall|32.550|-94.383|CST6CDT
+addcity 3|Melbourne|-37.800|144.967|EST-10EST,M10.5.0,M3.5.0
+addcity 3|Memphis|35.146|-90.054|CST6CDT
+addcity 3|Meriden|41.535|-72.792|EST5EDT
+addcity 3|Miami|25.777|-80.192|EST5EDT
+addcity 3|Milano|45.443|9.186|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Milwaukee|43.039|-87.904|CST6CDT
+addcity 3|Minneapolis|44.983|-93.262|CST6CDT
+addcity 3|Minot|48.236|-101.294|CST6CDT
+addcity 3|Mobile|30.693|-88.043|CST6CDT
+addcity 3|Moline|41.509|-90.514|CST6CDT
+addcity 3|Montgomery|32.376|-86.309|CST6CDT
+addcity 3|Montpelier|44.260|-72.578|EST5EDT
+addcity 3|Montreal|45.507|-73.567|EST5EDT
+addcity 3|Moratuwa|6.750|79.917|IST-5:30
+addcity 3|Muncie|40.191|-85.388|CST6
+addcity 3|Munich|48.233|11.950|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Nashville|36.159|-86.782|CST6CDT
+addcity 3|Natchez|31.563|-91.392|CST6CDT
+addcity 3|NewBedford|41.637|-70.928|EST5EDT
+addcity 3|NewBritain|41.669|-72.783|EST5EDT
+addcity 3|NewHaven|41.307|-72.925|EST5EDT
+addcity 3|NewOrleans|29.948|-90.069|CST6CDT
+addcity 3|Newark|40.737|-74.172|EST5EDT
+addcity 3|Newcastle|-32.867|151.817|EST-10EST,M10.5.0,M3.5.0
+addcity 3|NiagaraFalls|43.093|-79.057|EST5EDT
+addcity 3|Nicosia|35.150|33.283|EET-2EEST,M3.5.0/3:00,M10.5.0/4:00
+addcity 3|Norfolk|36.853|-76.289|EST5EDT
+addcity 3|Oakland|37.801|-122.265|PST8PDT
+addcity 3|Ogden|41.225|-111.972|MST7MDT
+addcity 3|OklahomaCity|35.474|-97.518|CST6CDT
+addcity 3|Omaha|41.262|-95.937|CST6CDT
+addcity 3|Orlando|28.545|-81.377|EST5EDT
+addcity 3|Ottawa|45.400|-75.650|EST5EDT
+addcity 3|Paducah|37.087|-88.432|CST6CDT
+addcity 3|Pasadena|34.146|-118.145|PST8PDT
+addcity 3|Paterson|40.917|-74.172|EST5EDT
+addcity 3|Pensacola|30.414|-87.216|CST6CDT
+addcity 3|Peoria|40.695|-89.593|CST6CDT
+addcity 3|Philadelphia|39.949|-75.156|EST5EDT
+addcity 3|Phoenix|33.453|-112.074|MST7
+addcity 3|Pierre|44.372|-100.348|CST6CDT
+addcity 3|Pittsburgh|40.489|-80.000|EST5EDT
+addcity 3|Pittsfield|42.448|-73.254|EST5EDT
+addcity 3|Pocatello|42.861|-112.450|MST7MDT
+addcity 3|PortArthur|29.875|-93.938|CST6CDT
+addcity 3|Portland|43.659|-70.255|EST5EDT
+addcity 3|Portland|45.518|-122.676|PST8PDT
+addcity 3|Portsmouth|43.075|-70.757|EST5EDT
+addcity 3|Portsmouth|36.835|-76.304|EST5EDT
+addcity 3|Prague|50.083|14.400|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Pretoria|-26.167|28.033|SAT-2
+addcity 3|Providence|41.826|-71.411|EST5EDT
+addcity 3|Provo|40.235|-111.657|MST7MDT
+addcity 3|Pueblo|38.271|-104.609|MST7MDT
+addcity 3|Racine|42.730|-87.787|CST6CDT
+addcity 3|Raleigh|35.777|-78.639|EST5EDT
+addcity 3|RankinInletNunavut|62.820|-92.110|CST6CDT
+addcity 3|RapidCity|44.081|-103.220|MST7MDT
+addcity 3|Reading|40.336|-75.928|EST5EDT
+addcity 3|Reno|39.524|-119.811|PST8PDT
+addcity 3|Richmond|37.538|-77.436|EST5EDT
+addcity 3|Roanoke|37.270|-79.946|EST5EDT
+addcity 3|Rochester|44.023|-92.468|CST6CDT
+addcity 3|Rochester|43.161|-77.606|EST5EDT
+addcity 3|Rockford|42.269|-89.097|CST6CDT
+addcity 3|RoquedelosMuchachos|28.758|-17.880|AST1ADT,M3.5.0,M10.5.0
+addcity 3|Sacramento|38.583|-121.495|PST8PDT
+addcity 3|Saginaw|43.431|-83.935|EST5EDT
+addcity 3|SaintCloud|45.567|-94.173|CST6CDT
+addcity 3|SaintJoseph|39.766|-94.851|CST6CDT
+addcity 3|SaintLouis|38.629|-90.206|CST6CDT
+addcity 3|SaintLuciaQld|-27.501|153.011|EST-10
+addcity 3|SaintPaul|44.955|-93.102|CST6CDT
+addcity 3|SaintPetersburg|27.772|-82.639|EST5EDT
+addcity 3|Salem|44.940|-123.033|PST8PDT
+addcity 3|Salina|38.843|-97.613|CST6CDT
+addcity 3|Salzburg|48.050|16.617|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|SanAngelo|31.461|-100.434|CST6CDT
+addcity 3|SanAntonio|29.427|-98.485|CST6CDT
+addcity 3|SanBernardino|34.108|-117.291|PST8PDT
+addcity 3|SanDiego|32.715|-117.156|PST8PDT
+addcity 3|SanJose|37.338|-121.890|PST8PDT
+addcity 3|SanJuan|18.467|-66.117|AST4
+addcity 3|SantaBarbara|34.422|-119.699|PST8PDT
+addcity 3|SantaCruz|36.972|-122.022|PST8PDT
+addcity 3|SantaFe|35.686|-105.936|MST7MDT
+addcity 3|Santiago|-33.450|-70.550|WST4WDT,M9.5.0,M3.2.0
+addcity 3|SantoDomingo|18.500|-69.950|DRT4
+addcity 3|Sapporo|43.067|141.333|JST-9
+addcity 3|Sarasota|27.335|-82.542|EST5EDT
+addcity 3|Savannah|32.078|-81.094|EST5EDT
+addcity 3|Schenectady|42.812|-73.928|EST5EDT
+addcity 3|Scranton|41.409|-75.663|EST5EDT
+addcity 3|Seattle|47.609|-122.337|PST8PDT
+addcity 3|Sheboygan|43.751|-87.714|CST6CDT
+addcity 3|Sheridan|44.799|-106.953|MST7MDT
+addcity 3|Shreveport|32.513|-93.749|CST6CDT
+addcity 3|Singapore|1.417|103.833|SST-8
+addcity 3|SiouxCity|42.496|-96.408|CST6CDT
+addcity 3|SiouxFalls|43.543|-96.726|CST6CDT
+addcity 3|Somerville|42.388|-71.102|EST5EDT
+addcity 3|SouthBend|41.676|-86.250|EST5
+addcity 3|Spartanburg|34.951|-81.935|EST5EDT
+addcity 3|Spokane|47.659|-117.426|PST8PDT
+addcity 3|Springfield|39.799|-89.647|CST6CDT
+addcity 3|Springfield|42.106|-72.592|EST5EDT
+addcity 3|Springfield|37.218|-93.292|CST6CDT
+addcity 3|Springfield|39.927|-83.808|EST5EDT
+addcity 3|SaintPetersburg|59.917|30.250|MSK-3MSD,M3.5.0,M10.5.0
+addcity 3|Stamford|41.053|-73.540|EST5EDT
+addcity 3|Steubenville|40.362|-80.615|EST5EDT
+addcity 3|Stockton|37.958|-121.288|PST8PDT
+addcity 3|Strasbourg|48.583|7.750|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Stuttgart|48.767|9.183|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Superior|46.721|-92.102|CST6CDT
+addcity 3|SydneyNSW|-33.867|151.200|EST-10EST,M10.5.0,M3.5.0
+addcity 3|Syracuse|43.051|-76.154|EST5EDT
+addcity 3|Tacoma|47.250|-122.438|PST8PDT
+addcity 3|Taipei|25.033|121.517|TST-8
+addcity 3|Tallahassee|30.442|-84.282|EST5EDT
+addcity 3|Tallinn|59.450|24.750|EET-2EETDST,M3.5.0,M10.5.0
+addcity 3|Tampa|27.949|-82.457|EST5EDT
+addcity 3|Tangier|35.867|-5.917|GMT0
+addcity 3|TerreHaute|39.468|-87.407|EST5
+addcity 3|Texarkana|33.430|-94.042|CST6CDT
+addcity 3|Toledo|41.654|-83.544|EST5EDT
+addcity 3|Topeka|39.054|-95.673|CST6CDT
+addcity 3|Toronto|43.653|-79.383|EST5EDT
+addcity 3|Trenton|40.221|-74.770|EST5EDT
+addcity 3|Tromso|69.683|19.583|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Troy|42.729|-73.683|EST5EDT
+addcity 3|Tucson|32.221|-110.969|MST7
+addcity 3|Tulsa|36.153|-95.993|CST6CDT
+addcity 3|Urbana|40.112|-88.202|CST6CDT
+addcity 3|Utica|43.103|-75.226|EST5EDT
+addcity 3|Vancouver|49.276|-123.142|PST8PDT
+addcity 3|Varna|43.200|27.950|CET-2CDT,M3.5.0,M10.5.0
+addcity 3|Victoria|48.500|-123.417|PST8PDT
+addcity 3|Vienna|48.200|16.367|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Waco|31.553|-97.133|CST6CDT
+addcity 3|WallaWalla|46.069|-118.340|PST8PDT
+addcity 3|Waterbury|41.554|-73.042|EST5EDT
+addcity 3|Waterloo|42.494|-92.339|CST6CDT
+addcity 3|Wellington|-41.290|174.769|NZT-12NZD,M10.1.0,M3.2.0
+addcity 3|WestPalmBeach|26.710|-80.052|EST5EDT
+addcity 3|Wheeling|40.068|-80.722|EST5EDT
+addcity 3|WhitePlains|41.033|-73.763|EST5EDT
+addcity 3|WichitaFalls|33.909|-98.491|CST6CDT
+addcity 3|Wichita|37.692|-97.338|CST6CDT
+addcity 3|Wilkes-Barre|41.242|-75.888|EST5EDT
+addcity 3|Wilmington|39.746|-75.547|EST5EDT
+addcity 3|Wilmington|34.237|-77.949|EST5EDT
+addcity 3|Winnipeg|49.833|-97.117|CST6CDT
+addcity 3|Winston-Salem|36.098|-80.245|EST5EDT
+addcity 3|Wollongong|-34.400|150.900|EST-10EST,M10.5.0,M3.5.0
+addcity 3|Worcester|42.260|-71.805|EST5EDT
+addcity 3|Yakima|46.602|-120.511|PST8PDT
+addcity 3|Yonkers|40.932|-73.898|EST5EDT
+addcity 3|York|39.960|-76.727|EST5EDT
+addcity 3|Youngstown|41.099|-80.651|EST5EDT
+addcity 3|Yuma|32.715|-114.623|MST7
+addcity 3|Zagreb|45.812|15.981|MET-1METDST,M3.5.0,M10.5.0
+addcity 3|Zanesville|39.938|-82.008|EST5EDT
+addcity 3|Zurich|47.378|8.551|MET-1METDST,M3.5.0,M10.5.0
+
+
+addcity 4|ATCANarrabri|-30.314|149.567|EST-10EST,M10.5.0,M3.5.0
+addcity 4|AlleghenyObservatory|40.483|-80.017|EST5EDT
+addcity 4|Anglo-AustralianObservatory|-31.277|149.066|EST-10EST,M10.5.0,M3.5.0
+addcity 4|AreciboRadiotelescope|18.354|-66.755|AST4
+addcity 4|Astrophys.ResearchConsortium(ARC)|32.783|-105.817|CST6CDT
+addcity 4|AstronomischesInst.Univ.Obs.|48.233|16.333|MET-1METDST,M3.5.0,M10.5.0
+addcity 4|BIMA|40.817|-121.467|PST8PDT
+addcity 4|BiseiSpaceguardCenter|34.672|133.544|JST-9
+addcity 4|ByurakanObservatory|40.333|44.300|MSK-3MSD,M3.5.0,M10.5.0
+addcity 4|CalarAltoObservatory|37.217|-2.533|MET-1METDST,M3.5.0,M10.5.0
+addcity 4|Canada-France-HawaiiTel.(CFHT)|19.827|-155.472|HST10
+addcity 4|CaseyObservatory|-66.200|110.350|WST-8
+addcity 4|CatalinaObservatory|32.417|-110.732|PST8PDT
+addcity 4|CerroTololoInter-AmericanObs.|-30.165|-70.815|WST4WDT,M9.5.0,M3.2.0
+addcity 4|ColumbusProject|32.700|-109.850|PST8PDT
+addcity 4|CrimeanAstrophysicalObs.|44.733|34.000|CET-2CDT,M3.5.0,M10.5.0
+addcity 4|DavisObservatory|-68.583|77.967|AAT-6
+addcity 4|DominionAstrophysicalObservatory|48.522|-123.417|PST8PDT
+addcity 4|DominionRadioAstro.Observatory|49.333|-119.600|PST8PDT
+addcity 4|Effelsberg100mRadiotelescope|50.527|6.855|MET-1METDST,M3.5.0,M10.5.0
+addcity 4|ESO1-meterSchmidtTelescope|-29.250|-70.733|WST4WDT,M9.5.0,M3.2.0
+addcity 4|EuropeanSouthernObservatory(NTT)|-29.257|-70.730|WST4WDT,M9.5.0,M3.2.0
+addcity 4|EuropeanSouthernObservatory(VLT)|-24.850|-70.450|WST4WDT,M9.5.0,M3.2.0
+addcity 4|GeminiTelescope(north)|19.817|-155.467|HST10
+addcity 4|GeminiTelescope(south)|-30.350|-70.817|WST4WDT,M9.5.0,M3.2.0
+addcity 4|IsaacNewtonTelescope(98-inch)|28.767|-17.883|AST1ADT,M3.5.0,M10.5.0
+addcity 4|KHBI|15.122|145.694|PST-9
+addcity 4|KarlSchwarzschildObservatorium|50.983|11.717|MET-1METDST,M3.5.0,M10.5.0
+addcity 4|KisoObservatory|35.800|137.633|JST-9
+addcity 4|KittPeakNationalObs.|31.980|-111.600|MST7
+addcity 4|LargeEarth-basedSolarTel.(LEST)|28.767|-17.883|AST1ADT,M3.5.0,M10.5.0
+addcity 4|LasCampanasObservatory|-29.003|-70.702|WST4WDT,M9.5.0,M3.2.0
+addcity 4|LeanderMcCormickObservatory|38.033|-78.517|EST5EDT
+addcity 4|LearmonthSolarObservatory|-22.233|114.083|WST-8
+addcity 4|LickObservatory|37.350|-121.633|PST8PDT
+addcity 4|MMT|31.683|-110.883|MST7
+addcity 4|MaunaKeaObservatory(NASAIRTF)|19.833|-155.467|HST10
+addcity 4|MawsonObservatory|-67.600|62.883|AAT-6
+addcity 4|McDonaldObservatory|30.672|-104.022|CST6CDT
+addcity 4|Michigan-Dartmouth-MITObs.|31.950|-111.617|MST7
+addcity 4|MountWilsonObservatory|34.217|-118.050|PST8PDT
+addcity 4|Mt.StromloObservatory|-35.321|149.024|EST-10EST,M10.5.0,M3.5.0
+addcity 4|NancayRadiotelescope|47.380|2.197|MET-1METDST,M3.5.0,M10.5.0
+addcity 4|NationalAstronomyObs.(Japan)|19.817|-155.467|HST10
+addcity 4|NordicOpticalTelescope|28.750|-17.883|AST1ADT,M3.5.0,M10.5.0
+addcity 4|NorthLibertyRadioObservatory|41.771|-91.574|CST6CDT
+addcity 4|Obs.Astro.Nacional|31.029|-115.487|PST8PDT
+addcity 4|Obs.Astro.Nacional|19.033|-98.314|CST6CDT
+addcity 4|ObservatoireRoyaldeBelgique|50.800|4.350|MET-1METDST,M3.5.0,M10.5.0
+addcity 4|ObservatoiredeBesancon|47.247|5.990|MET-1METDST,M3.5.0,M10.5.0
+addcity 4|ObservatoiredeCalern|43.755|6.938|MET-1METDST,M3.5.0,M10.5.0
+addcity 4|ObservatoiredeNice|43.717|7.300|MET-1METDST,M3.5.0,M10.5.0
+addcity 4|ObservatoiredeParis|48.800|2.233|MET-1METDST,M3.5.0,M10.5.0
+addcity 4|OldRoyalObservatory|51.483|-0.000|GMT0BST,M3.5.0,M10.5.0
+addcity 4|Oschin48-inchTelescope|33.350|-116.850|PST8PDT
+addcity 4|PalomarObservatory(200inch)|33.350|-116.867|PST8PDT
+addcity 4|ParkesRadiotelescope|-33.000|148.262|EST-10EST,M10.5.0,M3.5.0
+addcity 4|RadioastrophysicalObservatory|56.783|24.400|MET-1METDST,M3.5.0,M10.5.0
+addcity 4|RoyalGreenwichObservatory|50.867|0.333|GMT0BST,M3.5.0,M10.5.0
+addcity 4|SidingSpringObservatory|-31.273|149.061|EST-10EST,M10.5.0,M3.5.0
+addcity 4|SpaceTelescopeScienceInst.|39.300|-76.617|EST5EDT
+addcity 4|SpecialAstrophysicalObs.|43.650|41.433|MSK-3MSD,M3.5.0,M10.5.0
+addcity 4|TelescopioNazionaleGalileo|28.767|-17.883|AST1ADT,M3.5.0,M10.5.0
+addcity 4|TorunRadiotelescope|52.911|18.564|CET-2CDT,M3.5.0,M10.5.0
+addcity 4|TorusObservatory|47.183|-122.132|PST8PDT
+addcity 4|U.S.NavalObservatory|38.917|-77.067|MST7
+addcity 4|UnitedKingdomInfraredTel.(UKIRT)|19.833|-155.467|HST10
+addcity 4|UnitedKingdomSchmidtTel.Unit|-31.267|149.067|EST-10EST,M10.5.0,M3.5.0
+addcity 4|Univ.ofBCandLavalUniv.|49.117|-122.583|PST8PDT
+addcity 4|UppsalaUniversityObservatory|59.500|17.600|MET-1METDST,M3.5.0,M10.5.0
+addcity 4|VainuBappuObservatory|12.583|78.833|IST-5:30
+addcity 4|Venezuela1-meterSchmidt|8.783|-70.867|AST4
+addcity 4|VLA|34.067|-107.617|MST7MDT
+addcity 4|VLBA|48.131|-119.682|PST8PDT
+addcity 4|VLBA|30.635|-103.944|CST6CDT
+addcity 4|VLBA|42.933|-71.986|EST5EDT
+addcity 4|VLBA|31.956|-111.612|MST7
+addcity 4|VLBA|35.775|-106.245|MST7MDT
+addcity 4|VLBA|19.804|-155.458|HST10
+addcity 4|VLBA|41.771|-91.574|CST6CDT
+addcity 4|VLBA|37.232|-118.276|PST8PDT
+addcity 4|VLBA|34.301|-108.119|MST7MDT
+addcity 4|VLBA|17.758|-64.584|AST4
+addcity 4|W.M.KeckObservatory|19.817|-155.467|HST10
+addcity 4|WIYNObservatory|31.950|-111.600|MST7
+addcity 4|WSHB|32.684|-81.131|EST5EDT
+addcity 4|WilliamHerschelTelescope|28.767|-17.883|AST1ADT,M3.5.0,M10.5.0
+addcity 4|WinerMobileObservatory|31.666|-110.602|MST7
+addcity 4|WyomingInfraredObservatory|41.098|-105.977|MST7MDT
+addcity 4|YerkesObservatory|42.567|-88.550|CST6CDT
+addcity 4|ZentralinstitutfurAstrophysik|52.383|13.067|MET-1METDST,M3.5.0,M10.5.0

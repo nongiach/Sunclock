@@ -1,0 +1,82 @@
+# The following defines can be used to change the hardcoded features 
+# (the first two provide *more* features, the last four *less* features)
+#
+# GREEK to implement ^C bindings (emacs) or ^KG bindings (wordstar) for
+#   TeX style Greek letters \alpha, etc...
+# JUSTIFY to enhance the format paragraph routines (e.g., to have
+#   left and right justification, right justification is bound to Esc-J 
+#   with emacs style bindings)
+#
+# VERTCURS for a vertical cursor
+# BOXCURS for a box-cursor
+# TWOBUTN paste with button3 click, set selection with button3 drag
+# MINIMAL to remove bak files, /usr/share/edmtx and e**rc
+# TLL for Terry Loveall personal settings
+
+#ifndef SHAREDIR
+SHAREDIR=/usr/share/editkit
+#endif
+
+CFLAGS = -O2 -fomit-frame-pointer -pipe -Wall -DTHREED -DGREEK -DJUSTIFY -DSHAREDIR="\"$(SHAREDIR)\""
+
+#CFLAGS = -O2 -fomit-frame-pointer -pipe -Wall -DMINIMAL -DTWOBUTN -DVERTCURS -DTLL
+
+#CFLAGS = -g -pipe
+
+TLIBS = -L/usr/lib -ltermcap
+XLIBS = -L/usr/X11R6/lib -lX11
+
+# Use this for solaris
+#CFLAGS = -O2 -pipe -Wall
+#LIBS = -L/usr/openwin/lib -lsocket -lnsl -lresolv -lXext -lX11
+
+
+all: edt emt edx emx
+
+edt: edt.o
+	gcc $(CFLAGS) -o edt edt.o $(TLIBS)
+	@ls -al $@;strip $@;ls -al $@
+
+emt: emt.o
+	gcc $(CFLAGS) -o emt emt.o $(TLIBS)
+	@ls -al $@;strip $@;ls -al $@
+
+edx: edx.o
+	gcc $(CFLAGS) -o edx edx.o $(XLIBS)
+	@ls -al $@;strip $@;ls -al $@
+
+emx: emx.o
+	gcc $(CFLAGS) -o emx emx.o $(XLIBS)
+	@ls -al $@;strip $@;ls -al $@
+
+edt.o: Makefile version.h messages.def termcap.c edit.h edit.c term_bind_ws.c
+	gcc $(CFLAGS) -DWORDSTAR -o edt.o -c termcap.c
+
+emt.o: Makefile version.h messages.def termcap.c edit.h edit.c term_bind_em.c
+	gcc $(CFLAGS) -DEMACS -o emt.o -c termcap.c
+
+edx.o: Makefile version.h messages.def x11.c edit.h edit.c x11_bind_ws.c
+	gcc $(CFLAGS) -DWORDSTAR -o edx.o -c x11.c
+
+emx.o: Makefile version.h messages.def x11.c edit.h edit.c x11_bind_em.c
+	gcc $(CFLAGS) -DEMACS -o emx.o -c x11.c
+
+install:
+	if [ -x edt ]; then cp -f edt $(BINDIR); fi
+	if [ -x emt ]; then cp -f emt $(BINDIR); fi
+	if [ -x edx ]; then cp -f edx $(BINDIR); fi
+	if [ -x emx ]; then cp -f emx $(BINDIR); fi
+	mkdir -p $(SHAREDIR)
+	cp -f rc.example $(SHAREDIR)/rc.common
+	cp -f README $(SHAREDIR)
+	if [ -x edt ] || [ -x edx ]; then cp -f MANUAL.wo*ar $(SHAREDIR); fi
+	if [ -x emt ] || [ -x emx ]; then cp -f MANUAL.emacs $(SHAREDIR); fi
+	if [ -x edt ]; then cd $(SHAREDIR); ln -sf rc.common edtrc; fi 
+	if [ -x emt ]; then cd $(SHAREDIR); ln -sf rc.common emtrc; fi 
+	if [ -x edx ]; then cd $(SHAREDIR); ln -sf rc.common edxrc; fi 
+	if [ -x emx ]; then cd $(SHAREDIR); ln -sf rc.common emxrc; fi 
+
+clean:
+	-rm -f *.o *~ edt emt edx emx
+
+cleandir: clean

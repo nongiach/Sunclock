@@ -1,0 +1,35 @@
+Starting from version 3.30 on, the recommended image format is JPEG,
+(although you can still use the .xpm or .xpm.gz format as before).
+We suggest you to download (actually very nice!) Earth maps from the
+xglobe/xplanet home sites
+   http://www.radcyberzine.com/xglobe/
+   http://www.vterrain.org/Imagery/whole_earth.html
+   http://apollo.spaceports.com/~jhasting/planets.html
+
+This version has A POWERFUL ZOOM IMPLEMENTATION !!
+If you want to get the full power of it, you can use the huge 11Mb jpeg 
+Earth map from 
+    http://apollo.spaceports.com/~jhasting/earth.html
+    ftp://ftp.ac-grenoble.fr/ge/geosciences/sunclock_huge_earthmap.jpg
+
+                       ********************
+                       ***  CAUTION !!! ***
+                       ********************
+
+Starting from version 3.42 on, the format of the RC config files has been
+slightly changed. The -addcity option replaces the former [Cities] more
+rigid syntax. Older tags [Options] and [Cities] SHOULD NO LONGER be used.
+BOTH the system wide Sunclockrc and the user's private ~/.sunclockrc are 
+now read by sunclock at start-up, so cities defined in Sunclockrc
+SHOULD NOT BE REDEFINED in ~/.sunclockrc
+
+In 3.43, the -spotsize option has been changed to -spotsizes, and its 
+behaviour HAS BEEN CHANGED
+
+In 3.44, the syntax of ALL COLOR OPTIONS HAS CHANGED. A unique option
+-setcolor field|color is to be used instead.  Similarly, options
+-monochrome, -invertcolors and -fullcolors have been replaced by a single 
+option -colorlevel <value> (0, 1, 2, 3)
+
+3.44/3.45 have introduced the ability to DISPLAY MAPS ON THE ROOT WINDOW
+3.46 can be used as a SCREENSAVER (-screensaver option)

@@ -1,0 +1,59 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 02_docdir.dpatch by Roland Rosenfeld <roland@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Place MANUAL.emacs in DOCDIR instead of SHAREDIR
+
+@DPATCH@
+diff -urNad sunclock~/Imakefile sunclock/Imakefile
+--- sunclock~/Imakefile
++++ sunclock/Imakefile
+@@ -69,7 +69,8 @@
+           DESTDIR=$(DESTDIR) \
+ 	  BINDIR=$(LIBDIR)/bin \
+ 	  MANDIR=$(SHAREDIR)/editkit \
+-	  SHAREDIR=$(DESTDIR)$(SHAREDIR)/editkit
++	  SHAREDIR=$(DESTDIR)$(SHAREDIR)/editkit \
++	  DOCDIR=$(DOCDIR)
+ 
+ install.man::
+ 	if [ -r $(DESTDIR)$(MANDIR)/sunclock.1x.gz ] ; \
+diff -urNad sunclock~/editkit/Imakefile sunclock/editkit/Imakefile
+--- sunclock~/editkit/Imakefile
++++ sunclock/editkit/Imakefile
+@@ -33,7 +33,7 @@
+ XCOMM Compile options:
+ XCOMM
+ 
+-CFLAGS = -O2 -fomit-frame-pointer -pipe -Wall -DTHREED -DGREEK -DJUSTIFY -DSHAREDIR="\"$(SHAREDIR)\""
++CFLAGS = -O2 -fomit-frame-pointer -pipe -Wall -DTHREED -DGREEK -DJUSTIFY -DSHAREDIR="\"$(SHAREDIR)\"" -DDOCDIR="\"$(DOCDIR)\""
+ 
+ LOCAL_LIBRARIES=$(XLIB)
+ DEPLIBS=		# I don't know what I'm doing, and I hate imake!
+diff -urNad sunclock~/editkit/edit.c sunclock/editkit/edit.c
+--- sunclock~/editkit/edit.c
++++ sunclock/editkit/edit.c
+@@ -802,9 +802,9 @@
+ #ifdef EXTHELP
+ 	char name[NLEN];
+ #ifdef EMACS
+-	sprintf(name, "%s/%s", SHAREDIR, "MANUAL.emacs");
++	sprintf(name, "%s/%s", DOCDIR, "MANUAL.emacs");
+ #else
+-	sprintf(name, "%s/%s", SHAREDIR, "MANUAL.wordstar");
++	sprintf(name, "%s/%s", DOCDIR, "MANUAL.wordstar");
+ #endif
+ 	new_edit(name);
+ #else
+diff -urNad sunclock~/editkit/x11_bind_em.c sunclock/editkit/x11_bind_em.c
+--- sunclock~/editkit/x11_bind_em.c
++++ sunclock/editkit/x11_bind_em.c
+@@ -81,7 +81,7 @@
+ 		switch(key) {
+ 		case XK_Tab		: word_mark(); break;			/* ^Tab mark cursor word */
+ #ifndef MINIMAL
+-		case XK_F1		: new_edit(SHAREDIR"/MANUAL.emacs"); break;			/* ^F1 open emx Manual */
++		case XK_F1		: new_edit(DOCDIR"/MANUAL.emacs"); break;			/* ^F1 open emx Manual */
+ #endif
+ 		case XK_F9		: new_edit(""); break;			/* ^F3 open new emx */
+ 		case XK_Home	: top(); break; 				/* ^Home bof */

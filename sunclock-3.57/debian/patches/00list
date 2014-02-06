@@ -1,0 +1,8 @@
+01_emx_directory.dpatch
+02_docdir.dpatch
+03_remove_libXext.dpatch
+04_dont_strip_emx.dpatch
+05_rename_manual.dpatch
+06_CET-1CDT.dpatch
+07_zlib_largefile_workaround.dpatch
+08_manpage_hyphen.dpatch

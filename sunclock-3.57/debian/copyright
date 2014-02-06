@@ -1,0 +1,112 @@
+This package was debianized by Roland Rosenfeld <roland@debian.org> on
+Fri, 23 Oct 1998 17:14:14 +0200.
+
+It was downloaded from
+ftp://ftp.x.org/contrib/applications/sunclock-1.4.tar.gz
+ftp://ftp.dent.med.uni-muenchen.de/pub/wmglo/sunclock-1.5.tar.gz
+ftp://ftp.ac-grenoble.fr/ge/geosciences/sunclock/sunclock-3.57.tar.bz2
+
+Upstream Author: John  Mackin <john@cs.su.oz.AU>
+Upstream maintainer: Jean-Pierre Demailly <demailly@fourier.ujf-grenoble.fr>
+
+Copyright:
+
+/*****************************************************************************
+ *
+ * Sun clock version 3.xx by Jean-Pierre Demailly
+ *
+ * Is derived from the previous versions whose notices appear below.
+ * See CHANGES for more explanation on the (quite numerous changes and
+ * improvements). Version 3.xx is now published under the GPL.
+ */
+
+/*****************************************************************************
+ *
+ * Sun clock.  X11 version by John Mackin.
+ *
+ * This program was derived from, and is still in part identical with, the
+ * Suntools Sun clock program whose author's comment appears immediately
+ * below.  Please preserve both notices.
+ *
+ * The X11R3/4 version of this program was written by John Mackin, at the
+ * Basser Department of Computer Science, University of Sydney, Sydney,
+ * New South Wales, Australia; <john@cs.su.oz.AU>.  This program, like
+ * the one it was derived from, is in the public domain: `Love is the
+ * law, love under will.'
+ */
+
+/*****************************************************************************
+
+	Sun clock
+
+	Designed and implemented by John Walker in November of 1988.
+
+	Version for the Sun Workstation.
+
+    The algorithm used to calculate the position of the Sun is given in
+    Chapter 18 of:
+
+    "Astronomical  Formulae for Calculators" by Jean Meeus, Third Edition,
+    Richmond: Willmann-Bell, 1985.  This book can be obtained from:
+
+       Willmann-Bell
+       P.O. Box 35025
+       Richmond, VA  23235
+       USA
+       Phone: (804) 320-7016
+
+    This program was written by:
+
+       John Walker
+       Autodesk, Inc.
+       2320 Marinship Way
+       Sausalito, CA  94965
+       USA
+       Fax:   (415) 389-9418
+       Voice: (415) 332-2344 Ext. 2829
+       Usenet: {sun,well,uunet}!acad!kelvin
+	   or: kelvin@acad.uu.net
+
+    modified for interactive maps by
+
+	Stephen Martin
+	Fujitsu Systems Business of Canada
+	smartin@fujitsu.ca
+
+    This  program is in the public domain: "Do what thou wilt shall be the
+    whole of the law".  I'd appreciate  receiving  any  bug  fixes  and/or
+    enhancements,  which  I'll  incorporate  in  future  versions  of  the
+    program.  Please leave the original attribution information intact	so
+    that credit and blame may be properly apportioned.
+*/
+
+readgif.c:
+/* +-------------------------------------------------------------------+ */
+/* | Copyright 1990, 1991, 1993 David Koblas.                          | */
+/* | Copyright 1996 Torsten Martinsen.                                 | */
+/* |   Permission to use, copy, modify, and distribute this software   | */
+/* |   and its documentation for any purpose and without fee is hereby | */
+/* |   granted, provided that the above copyright notice appear in all | */
+/* |   copies and that both that copyright notice and this permission  | */
+/* |   notice appear in supporting documentation.  This software is    | */
+/* |   provided "as is" without express or implied warranty.           | */
+/* +-------------------------------------------------------------------+ */
+
+readpng.c:
+/* +-------------------------------------------------------------------+ */
+/* | This file is derived from                                         | */
+/* | Xpaint's readPNG routines, copyrighted                            | */
+/* | by Greg Roelofs (newt@pobox.com)                                  | */
+/* |                                                                   | */
+/* | Permission to use, copy, modify, and to distribute this software  | */
+/* | and its documentation for any purpose is hereby granted without   | */
+/* | fee, provided that the above copyright notice appear in all       | */
+/* | copies and that both that copyright notice and this permission    | */
+/* | notice appear in supporting documentation.  There is no           | */
+/* | representations about the suitability of this software for        | */
+/* | any purpose.  this software is provided "as is" without express   | */
+/* | or implied warranty.                                              | */
+/* |                                                                   | */
+/* +-------------------------------------------------------------------+ */
+
+The complete GPL can be found in /usr/share/common-licenses/GPL.

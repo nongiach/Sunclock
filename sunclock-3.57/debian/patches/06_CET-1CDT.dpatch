@@ -1,0 +1,46 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 06_CET-1CDT.dpatch by Roland Rosenfeld <roland@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Fix timezones for Budapest, Warsaw, Bratislava and the Torun
+## DP: Radiotelescope from CET-2CDT to CET-1CDT (Closes: #438761).
+
+@DPATCH@
+diff -urNad sunclock~/Sunclockrc sunclock/Sunclockrc
+--- sunclock~/Sunclockrc
++++ sunclock/Sunclockrc
+@@ -66,14 +66,14 @@
+ addcity 2|Rome|41.867|12.617|MET-1METDST,M3.5.0,M10.5.0
+ addcity 2|Madrid|40.417|-3.700|MET-1METDST,M3.5.0,M10.5.0
+ addcity 2|Athens|37.967|23.733|EET-2EETDST,M3.5.0,M10.5.0
+-addcity 2|Budapest|47.433|19.250|CET-2CDT,M3.5.0,M10.5.0
++addcity 2|Budapest|47.433|19.250|CET-1CDT,M3.5.0,M10.5.0
+ addcity 2|Sofia|42.667|23.300|EET-3EDT,M3.5.0,M10.5.0
+ addcity 2|Reykjavik|64.130|-21.937|GMT0
+ addcity 2|Oslo|59.917|10.750|MET-1METDST,M3.5.0,M10.5.0
+ addcity 2|Stockholm|59.583|18.100|MET-1METDST,M3.5.0,M10.5.0
+ addcity 2|Helsinki|60.167|24.883|EET-2EETDST,M3.5.0,M10.5.0
+ addcity 2|Geneva|46.233|6.067|MET-1METDST,M3.5.0,M10.5.0
+-addcity 2|Warsaw|52.583|21.083|CET-2CDT,M3.5.0,M10.5.0
++addcity 2|Warsaw|52.583|21.083|CET-1CDT,M3.5.0,M10.5.0
+ addcity 2|SaintPetersburg|59.950|30.333|MSK-3MSD,M3.5.0/2:00,M10.5.0/3:00
+ addcity 2|Tashkent|41.333|69.300|UZT-5
+ addcity 2|Alma-Ata|43.230|76.880|ALMT-6ALMST,M3.5.0/0:00,M10.5.0/0:00
+@@ -175,7 +175,7 @@
+ addcity 3|Bordeaux|44.833|-0.583|MET-1METDST,M3.5.0,M10.5.0
+ addcity 3|Boston|42.357|-71.057|EST5EDT
+ addcity 3|BowlingGreen|36.995|-86.442|CST6CDT
+-addcity 3|Bratislava|48.167|17.117|CET-2CDT,M3.5.0,M10.5.0
++addcity 3|Bratislava|48.167|17.117|CET-1CDT,M3.5.0,M10.5.0
+ addcity 3|Brattleboro|42.852|-72.563|EST5EDT
+ addcity 3|Brest|48.383|-4.483|MET-1METDST,M3.5.0,M10.5.0
+ addcity 3|Bridgeport|41.180|-73.189|EST5EDT
+@@ -546,7 +546,7 @@
+ addcity 4|SpaceTelescopeScienceInst.|39.300|-76.617|EST5EDT
+ addcity 4|SpecialAstrophysicalObs.|43.650|41.433|MSK-3MSD,M3.5.0,M10.5.0
+ addcity 4|TelescopioNazionaleGalileo|28.767|-17.883|AST1ADT,M3.5.0,M10.5.0
+-addcity 4|TorunRadiotelescope|52.911|18.564|CET-2CDT,M3.5.0,M10.5.0
++addcity 4|TorunRadiotelescope|52.911|18.564|CET-1CDT,M3.5.0,M10.5.0
+ addcity 4|TorusObservatory|47.183|-122.132|PST8PDT
+ addcity 4|U.S.NavalObservatory|38.917|-77.067|MST7
+ addcity 4|UnitedKingdomInfraredTel.(UKIRT)|19.833|-155.467|HST10

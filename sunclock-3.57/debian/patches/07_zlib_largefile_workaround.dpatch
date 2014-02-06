@@ -1,0 +1,21 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 07_zlib_largefile_workaround.dpatch by Roland Rosenfeld <roland@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Workaround for zlib.h bug, which requires _LARGEFILE64_SOURCE if
+## DP: _FILE_OFFSET_BITS is set to 64 (see #439980) (Closes: #438924)
+
+@DPATCH@
+diff -urNad sunclock~/readvmf.c sunclock/readvmf.c
+--- sunclock~/readvmf.c
++++ sunclock/readvmf.c
+@@ -28,6 +28,9 @@
+ #include <string.h>
+ #include <math.h>
+ #ifdef ZLIB
++# if _FILE_OFFSET_BITS == 64
++#  undef _FILE_OFFSET_BITS
++# endif
+ #include <zlib.h>
+ #endif
+ 

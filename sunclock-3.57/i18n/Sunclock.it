@@ -1,0 +1,125 @@
+# Italian
+# Week days
+Dom
+Lun
+Mar
+Mer
+Gio
+Ven
+Sab
+# Months
+Gen
+Feb
+Mar
+Apr
+Mag
+Giu
+Lug
+Ago
+Set
+Ott
+Nov
+Dic
+# Additional labels
+Posizione
+Ora GMT
+Ora solare
+Ora legale
+Durata del giorno
+Alba
+Tramonto
+#
+secondi
+minuto
+ora
+giorno
+giorni
+#
+Cliccare su una città
+Cliccare su un punto
+Cliccare su due punti
+Cliccare ancora o premere ° per ° ' "
+#
+Tasto
+Tasto/Mouse
+Escape
+Uscire dal menu
+Tasto sconosciuto!!!
+Sincronizza
+Progressione =
+Scarto temporale =
+#
+Nome città
+Fuso orario
+Latitudine
+Longitudine
+Dimensione
+Attenzione: %s, lat = %s lon = %s%sè già nella lista delle città!
+Sostituisco i dati precedenti di %s
+#
+Opzione
+Attivo l'opzione selezionata...
+Opzione scorretta o non disponibile durante l'esecuzione!
+Opzioni: premi <Ctrl><Spazio> per uno spazio in un elemento
+(una volta)
+(ciclicamente, ogni %d secondi)
+(con cielo stellato)
+(finestra di sfondo vuota)
+con la seguente lista di opzioni abbastanza lunga:
+A partire da **, le opzioni sono configurabili durante l'esecuzione.
+Calcolo la nuova immagine...
+Sunclock dispone di un certo numero di funzioni accessibili per mezzo del mouse o della tastiera:
+# General help
+Mostrare aiuto ed opzioni (H o mouse, bottone 1)
+Caricare carta della Terra (F o mouse, bottone 2)
+Zoom (Z o mouse, bottone 3)
+Parametri dei centri urbani
+Opzione finestra comandi
+Utilizza la modalità coordinate
+Utilizza la modalità ora solare
+Utilizza la modalità distanze
+Utilizza la modalità estensione oraria
+Utilizza la modalità ora legale
+Modificare il tempo in avanti
+Modificare il tempo all'indietro
+Aggiustare la progressione temporale
+Rimettere a zero lo scarto temporale
+Mostrare/non mostrare la notte
+Mostrare/non mostrare il sole e la luna
+Mostrare/non mostrare i meridiani
+Mostrare/non mostrare i paralleli
+Mostrare/non mostrare i tropici/circoli polari/l'equatore
+Aprire una nuova finestra
+Chiudere la finestra
+Ridurre la finestra
+Rinfrescare la finestra
+Allargare la finestra alla dimensione dello schermo
+Ritornare a dimensione anteriore della carta
+Invertire le finestre mappa/orologio 
+Attivare il comando specifico per l'opzione -command
+Abbandonare il programma
+# Zoom window help
+Attiva le nuove impostazioni di zoom
+Ritorna alle impostazioni di zoom precedenti 
+Cancel change in zoom settings
+Imposta la proporzione ridimensionando la finestra
+Cicla attraverso le modalità zoom 0,1,2
+Ingrandisci di un fattore 1.2
+Rimpicciolisci di un fattore 1/1.2 = 0.833
+Ritorna al fattore di zoom = 1 (mappa completa)
+Centra l'area ingrandita sulla città o luogo prescelto
+Sincronizza l'operazione di zoom
+# Option window help
+Attiva l'opzione
+Cancella la linea comandi dell'opzione
+Finestre sincronizzati o no
+Copia la mappa alla finestra di sfondo
+Cancella la mappa dalla finestra di sfondo
+Inizia/Ferma l'animazione
+# Urban window help
+Usa gradi, minuti, secondi, oppure gradi decimali
+Cerca/scegli città
+Modifica i parametri delle città
+Aggiungi una nuova città
+Cancella città
+# End

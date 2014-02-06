@@ -1,0 +1,125 @@
+# French
+# Week days
+Dim
+Lun
+Mar
+Mer
+Jeu
+Ven
+Sam
+# Months
+Janv
+Févr
+Mars
+Avr
+Mai
+Juin
+Juil
+Août
+Sept
+Oct
+Nov
+Déc
+# Additional labels
+Point
+Heure GMT
+Heure solaire
+Heure légale 
+Durée du jour
+Lever
+Coucher
+#
+secondes
+minute
+heure
+jour
+jours
+#
+Cliquer sur une ville
+Cliquer sur un point
+Cliquer sur deux points
+Cliquer 2 fois ou taper ° pour ° ' "
+#
+Touche
+Contrôles Clavier/Souris
+Echap
+Sortir du menu
+Touche non liée à une fonction !!
+Synchro (")
+Progression =
+Décalage temporel =
+#
+Nom localité
+Zone horaire
+Latitude
+Longitude
+Taille
+Attention: %s, lat = %s lon = %s%sdéjà dans la liste des villes !!
+Modification des données pour la localité %s
+#
+Option
+Activation de l'option sélectionnée...
+Option incorrecte ou non disponible en exécution !!
+Options: taper <Ctrl><Espace> pour un blanc situé dans une chaîne
+(une fois)
+(périodiquement, période %d secondes)
+(avec fond de ciel étoilé)
+(avec fond d'écran vide)
+avec la liste d'options assez longue suivante :
+A partir de **, les options sont configurables pendant l'exécution.
+Calcul de la nouvelle image...
+Sunclock dispose d'un certain nombre de fonctions accessibles au moyen de la souris ou des touches du clavier :
+# General help
+Afficher l'aide et les options (H ou clic sur la bande du bas)
+Charger une carte de la Terre (F ou souris, bouton 2)
+Zoom (Z ou souris, bouton 3)
+Paramètres des localités Urbaines
+Fenêtre de commande des Options
+Utiliser le mode Coordonnées
+Utiliser le mode heure Solaire
+Utiliser le mode Distances
+Utiliser le mode Extension horaire
+Utiliser le mode heure Légale
+Avancer dans le temps
+Reculer dans le temps
+Ajuster la progression temporelle
+Remettre à zéro le décalage temporel
+Montrer/ne pas montrer la zone Nocturne
+Montrer/ne pas montrer le Soleil et la Lune
+Montrer/ne pas montrer les Méridiens
+Montrer/ne pas montrer les Parallèles
+Montrer/ne pas montrer les Tropiques/Equateur/Cercles arctiques
+Ouvrir une nouvelle carte/fenêtre
+Fermer la fenêtre
+Iconifier la fenêtre
+Rafraîchir la fenêtre
+Ajuster la largeur de fenêtre à la taille de l'écran
+Retour à la taille de fenêtre précédente
+Commuter les fenêtres carte/horloge 
+Activer la commande spécifiée par l'option -command
+Quitter le programme
+# Zoom window help
+Activer les nouvelles valeurs de zoom
+Revenir aux anciennes valeurs de zoom
+Annuler le changement de valeur de zoom
+Rectifier l'aspect en modifiant la taille de fenêtre
+Permuter les modes de zoom 0,1,2
+Zoomer d'un facteur 1.2
+Rétrécir d'un factor 1/1.2 = 0.833
+Revenir à un facteur de zoom = 1 (carte entière)
+Centrer le rectangle de zoom sur la localité choisie
+Synchroniser l'action du zoom
+# Option window help
+Activer l'option
+Effacer les commandes et paramètres
+Synchroniser les fenêtres entre elles ou non
+Reproduire la carte en fond d'écran
+Effacer la carte du fond d'écran
+Démarrer/arrêter l'animation
+# Urban window help
+Utiliser degrés, minutes, secondes, ou degrés décimaux
+Chercher/sélectionner une localité
+Modifier les paramètres de la localité
+Créer une nouvelle localité
+Supprimer la localité
+# End

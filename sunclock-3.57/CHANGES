@@ -1,0 +1,547 @@
+==============================================================================
+All revisions from version 1.4 to version 3.xx are by
+Jean-Pierre Demailly, demailly@fourier.ujf-grenoble.fr
+==============================================================================
+
+Planned versions ... (features to appear in some order)
+
+- Implement a (Sunclocksaver , ~/.sunclocksaver) pair of config files 
+  for fancier screensaver functionality (almost done - planned for 3.5x...)
+- Spherical representation of Earth
+- Moon phases
+
+Version 3.57 August 22, 2008
+
+- Included patch from Thomas M.Ott <thmo-13@gmx.de> : improvement of
+  German localization and management of gzip-compressed *.vmf files.
+- Corrected minor defects in timezones.vmf
+- Fixed somewhat -reformat option.
+- Imakefile change : VMF files now installed compressed by default.
+
+Version 3.56 June 22, 2006
+
+- Minor bug fixes (segfault bug in -mostly obsolete?- colorlevel 0)
+- added -zoomimage <file> (zoom image file) as new command line option
+  so as to change the vmf file used in the zoom widget.
+
+Version 3.55 June 18, 2006
+
+- The default clock/map image file is now 'timezones.vmf'
+- Added the new vector map file 'countries.vmf' (political boundaries)
+- Added some code in readvmf.c for more verbose information
+- Added 'zoomwidth' and 'zoomheight' as new options in VMF format
+- Completely reworked the explanations on the VMF format file in VMF.txt
+- Change default zoom mode to 0 (=no attempt to correct aspect ratio
+  as default behaviour)
+- Corrected minor bug in the mouse tracking procedure for area selection.
+- Installing now 'emx' in sunclock's SHAREDIR/bin subdirectory, in order to 
+  avoid possible conflicts with 'emx' from the xrmap package.
+
+Version 3.54 July 29, 2005
+
+- Corrected segfault bug #315462 from Debian bug tracking system
+- Improved look of 3D buttons 
+- xterm or terminal-emulator no longer needed since sunclock now
+  includes its own utility (emx, a very small emacs clone...)
+
+Version 3.53 November 22, 2004
+
+- All menus now use buttons with a 3D look
+- Key shortcut hints have been substantially improved
+- New option -image
+- VMF format has been slightly enhanced (allows text labels)
+- Corrected further GUI bugs
+- Command line options -jump and -progress should now work.
+
+Version 3.52 October 9, 2004
+
+- Corrected many small GUI bugs or annoyances. Thanks to Jamie Zawinski 
+  <jwz@jwz.org> for pointing out some of them and for useful advice.
+
+Version 3.51 August 27, 2004
+
+- New release, jumped version number to 3.51 because of substantial
+  improvements made
+- Added support for reading GIF and PNG images :
+  readgif.c & readpng.c, snarfed from xpaint's rw/ routines.
+  Sunclock now requires libpng (GIF is read by ad hoc routines)
+- Added a .spec file to enable building rpm packages, thanks to
+  François Massonneau <frmas@free.fr>
+- Added Polish localization, thanks to Cezary Morga <cezarym@pf.pl>
+- improved -setfont option, to take into account language specific
+  font settings
+
+Version 3.50pre3 August 4, 2004
+
+- Added AM/PM indicator, 12/24 hour in date/time format
+  (patch by James Turner <turner@blackbear.com>,
+   ** Senior Editor of LinuxWorld Magazine **)
+   
+Version 3.50pre2 June 30, 2004
+
+- Improvement of internal file explorer
+- Zooming can now be achieved by selecting an area with right mouse button
+  and/or by static click which still pops up the zoom window as before
+- Various updates to Sunclockrc and .vmf files
+
+Version 3.50 was never declared to be released in final form... 
+  so that should have been 3.50pre1, which is quite stable.
+
+Version 3.50pre1, August 13, 2001
+
+- Created "xrmap", derived from Reza Naima's vector map software "rmap".
+  This allows (or will allow) to build very accurate .vmf maps.
+  (A much better integration with sunclock should come at some point...)
+- Introduced the /tools directory
+- Sunclock can now read compressed .vmf.gz files (and uses the zlib
+  library for that purpose)
+- Created the timezones.vmf vector map, showing time zones (and/or nation 
+  boundaries in near future :-)
+- Changes in the VMF format to accomodate numerous new possibilities.
+- Corrected a long standing bug in readvmf.c
+- New -reformat option, useful to reformat .vmf files according to syntax
+  and standard line width.
+
+Version 3.46, July 5, 2001
+
+- New -screensaver option (that turns sunclock into a screensaver, when
+  used e.g. with Jamie Zawinski's xscreensaver...)
+- New options -randomrootpos -fixedrootpos -rootdx -rootdy which 
+  determine the behaviour of the screensaver functionality
+- New option -vmfcolors <list_of_colors> from which one can change 
+  interactively the list of predefined colors in a .vmf file
+- Fixes in the behaviour of auxiliary windows under opening or closing
+  the main maps (iconification/deiconification and so on...)
+
+Version 3.45v2, June 28, 2001
+
+- Severe bug corrected: sunclock-3.45 was segfaulting after any 
+  click on a random point of the map (in solar time mode)
+  Thanks to David Ronis <ronis@ronispc.chem.mcgill.ca> for
+  tracking down that bug.
+- Another less severe bug fixed: the root window refresh procedure now
+  works even when the main window is iconified (it is actually
+  recommended to iconify any window which is to be mapped on the
+  root window...)
+- The background color of the root window on which stars are drawn 
+  can now be chosen at will. For instance
+    -setcolor "star|yellow" -setcolor "root|grey20"
+  sets yellow stars on a grey20 sky. This thing also corrects possible
+  garbage that would otherwise have been drawn in the Pixmap texture.
+- Any city which is preselected via the -city <name> option still appears
+  even if its category is a priori to small to let it being displayed
+  for the given -sizelimits (suggestion by François Massonneau).
+- The -addcity option now tolerates the modification of a city (any city
+  already listed with the same name and coordinates up to 0.5 degree
+  is replaced from the list - a warning is issued, however - that warning
+  disappears if the city is first removed with -removecity).
+  Change suggested by Ted Rolle <ted@acacia.datacomm.com>
+
+Version 3.45, June 27, 2001
+
+- Sunclock can write periodically onto the root window with a specified
+  frequency (related new option -rootperiod <value>)
+- A new animation mode has been introduced to modify the speed of
+  time evolution (this is handled by a new option -animateperiod <value>).
+- The keys G J [ ] ' are used to handle these new features from the
+  Option window.
+- Hong Kong coordinates have been fixed to their correct values,
+  thanks to Stefan Recksiegel <stefan@post.kek.jp>
+- Urban and Option windows no longer have erratic sizes when switching
+  the map/clock modes, and the Menu window should be correctly refreshed.
+- A 5th city category has been introduced (suggestion by F.Massonneau,
+  <frmas@free.fr>). By default, spotsizes now range from 1 (largest cities) 
+  to 5 (towns or villages), instead of from 4 to 1 (the illogical ordering 
+  has been reversed - users who haven't tweaked their city parameters 
+  shouldn't see the change).
+- When a small city is selected (beyond the category of cities normally
+  displayed on the map), it is now shown, whatever the size is.
+- Some XEvent fixes (e.g. in clear bottom strip routine, and when
+  iconifying/deiconifying windows).
+
+Version 3.44, June 22, 2001
+
+- Sunclock is now able to write the map to the root window, and presents
+  a starry sky beyond the limits of the map.
+- The syntax of color options has changed. A unique option 
+  "-setcolor field|color" can be used instead. This single change reduced
+  the size of the binary code by 1.5 kB !!
+  Similarly, options -monochrome, -invertcolors and -fullcolors have been
+  replaced by a single option -colorlevel <value> (0, 1, 2, 3) [thus there
+  is a new color level as well, see man page]
+- Italian dialogs have been updated, thanks to Alessio F. Bragadini 
+  <alessio@sevenseas.org>
+- The code has been cleaned-up a little bit and should consume slightly
+  less memory, perhaps at the expense of slightly more CPU power.
+- Search of city works with respect to city names as well as with 
+  coordinates (when name entry is left empty).
+- A lot of minor bug fixes
+
+Version 3.43, June 14, 2001
+
+- Larger data base of cities/coordinates, with level of size
+  New related options -spotsizes -sizelimits -citycategories -citycheck
+  (The upshot is that the size of the spot representing a city can change
+  according to the importance of the city, and that not all cities are 
+  shown if the zoom factor is too small.)
+- Bug fixes: segfault occurring when playing around with the urban selector
+  (only when the clock geometry was set too small...); marked cities still
+  appeared when opening other windows: this was actually fixed by
+  suppressing an unneeded flag, thus reducing the memory usage...
+- The city search now really works !
+- A warning is issued when the user tries to create an already existing city.
+- The "Urban widget" is now stretchable.
+
+Version 3.42, June 11, 2001
+
+- New "Urban widget", which allows to easily search, introduce, erase or 
+  modify city locations at runtime
+- Change of format for the Sunclockrc and ~/.sunclockrc config files.
+  They now make use of the new -addcity option to enter (or remove) cities.
+  *Both* are read (with ~/.sunclockrc being read later, so that it
+  overrides the system wide Sunclockrc)
+- The -position option now allows degrees, minutes, seconds format
+- Fixes in option handling (hopefully fixing infamous segfault 
+  crashes when options were activated from the Option widget)
+
+Version 3.41, May 31, 2001
+
+- New fixes for X BadAccess bug with enlightenment (again!) 
+- New options -bottomline, -nobottomline. By default, no bottom line
+  appears in the newer version (looks nicer to me!)
+- Improvement of the -dock mode; new -undock option. Fixes for the
+  enlarge '>' command; new related -extrawidth option.
+- Synchronization fixes in multi-window context
+- Minor bugs corrected: parallel/tropic color setting now works, readvmf
+  should no longer produce artefacts on the left border when the 
+  magnification factor is larger than 1; speed slightly improved as well.
+- The Moon is now shown on the map (although not astronomically very 
+  accurate, probably a few minutes of arc of error...)
+  Related new options -moon, -nomoon, -objectmode x.
+- Sun and Moon coordinates can be shown on the map by typing 'y' once more
+
+Version 3.40, May 14, 2001
+
+- City names and coordinate values can now be shown on the map
+  by typing 'u' once more
+- Bitmaps of city/mark spots are now obtained from explicit data
+  in bitmaps.h rater than calls to X routines (slower and more rigid)
+- Menu options which can take more than 2 values (e.g. 'N') can get
+  their values rotated in both directions by using lower/upper cases
+  or clicking with the left/right mouse button.
+- Removed the sunclock_help script, replaced by an internal call
+- Much improved refresh mechanism for -fullcolors mode. Flickering
+  should not occur any longer in that mode (still somewhat unavoidable
+  with obsolete mode -invertcolors)
+- Corrected a X BadAccess bug showing up under some window managers
+  (e.g. enlightenment)
+
+Version 3.38, April 17, 2001
+
+- Added new color and font options 
+- The man page is installed automatically and is accessible from the GUI
+  (type key 'h' twice)
+- The option handling mechanism has been improved:
+  the ~/.sunclockrc config file as well as the option widget now accept
+  several options simultaneously on the same line.
+
+Version 3.37, April 13, 2001
+
+- Added new option -lightgradient
+- Corrected and improved somewhat the shading algorithm (while slightly
+  improving speed as well).
+
+Version 3.36, April 13, 2001
+
+- Code clean-ups and bug fixes. Language and fonts are now runtime
+  configurable as promised (and without segfaulting !).
+- When changing parameters, the XImage is recycled whenever possible.
+
+Version 3.35, April 11, 2001
+
+- A new "Option" widget appears; many command line options can be set
+  interactively at runtime from the option window.
+- The bigendian property is checked at runtime on the X display, not
+  just at compile time (the older way made sense only if the X display 
+  and X server were both of the same endian nature!)
+- Zoom colors are now configurable
+- Code clean-ups 
+- Bug fixes
+
+Version 3.34, March 30, 2001
+
+- Huge improvements in the zoom widget: a black and white map is now used
+  as a texture for guiding the moves; there is also a switch for 
+  synchronizing or desynchronizing the zoom events.
+- Several other new zoom functions (*, &, #, +, -, arrow keys...)
+- A lot of minor bug fixes
+
+Version 3.33, March 21, 2001
+
+- New improvements in the zoom widget, following suggestions by François
+  Massonneau <frmas@free.fr> and Ted Rolle <ted@acacia.datacomm.com> :
+  there is now a special mode allowing to keep control on the aspect
+  when changing the zoom area location.
+- Update of Dutch localization by Henry Verdonschot <henry@procura.nl>
+  and of Italian localization by Alessio F. Bragadini <alessio@sevenseas.org>
+- Bug fixes.
+
+Version 3.32, March 19, 2001
+
+- Fully functional zoom widget; all images are now zoomable in the
+  range 1 ... 100.00 (this does not always make sense, as most JPEG  
+  images have insufficient resolution for magnifications exceeding 5)
+- More efficient moveNightArea algorithm, resulting in a substantial
+  speed improvement when using keys A, B
+- Various clean-ups; new flag flag.update allowing a more elegant
+  updating process
+- Some other minor GUI improvements in menus or events (X Keys now 
+  handled properly...)
+- Bug fixes
+
+Version 3.31, March 3, 2001
+
+- Minor GUI improvements: the clock window now also has a menu toolbar,
+  and the file selector has been slightly improved.
+- One or two minor bugs have been fixed (obscure mistake in management of
+  pointers, when the initial window was closed before the later ones...)
+- A new (unfinished) widget appears: the zoom window - please wait for the
+  next release 3.32 for complete zooming capabilities!
+
+Version 3.30, February 26, 2001
+
+- Extensive support for PseudoColor displays, with private colormaps
+  being allocated automatically and quantization of colors being performed
+  when needed
+- .jpg and .xpm formats are fully supported, and all images are resizable
+
+Version 3.29, February 12, 2001 (not widely announced)
+
+- Sunclock now reads .jpg image formats in true-color modes
+- .jpg images are resizeable
+- The internal vector map has been turned into an externally loadable
+  map (a ".vmf" format)
+
+Version 3.28, January 15, 2001
+
+- Patch in setTZ routine for HP-UX systems (should use putenv(strdup(buf))
+  instead of putenv(buf)). Suggested by Henry Verdonschot <henry@procura.nl>
+- The text output in the bottom strip of the clock is now customizable via
+  a format string; idea based on a suggestion by Henry Verdonschot
+- Dutch localization (Henry Verdonschot again)
+- Norwegian localization; made by Johnny Ljunggren <johnny@navtek.no>
+- Synchronize (don't synchronize) switch via "!" at runtime.
+
+Version 3.27, December 29, 2000
+
+- New options -dock (initial clock window cannot be resized or closed), 
+  and -updateall (all windows are updated, which, of course, requires 
+  more CPU)
+- Fixes multiple window bug found by François Massonneau <frmas@free.fr>
+
+Version 3.26, December 22, 2000
+
+- Fixes segfault bug mentioned by François Massonneau <frmas@free.fr>
+
+Version 3.25, December 21, 2000
+
+- Simultaneous windows (in arbitrary number...)
+  All this required a lot of changes in the Sundata structures, which
+  now carry all information about the status of various maps. This
+  should make everything much more flexible...
+- As a corollary, sunclock should now be dockable
+
+Version 3.22, December 12, 2000 (not released...)
+
+- Fixed incorrect (zero!) distance calculations, minor bug noticed by
+  Marc Colling (mcol@village.uunet.lu)
+
+Version 3.21, December 4, 2000
+
+- Bug fixes in the window placement routines (as suggested by Roland
+  Rosenfeld)
+- Various improvements in the shading algorithm
+
+Version 3.20, November 24, 2000
+
+- Sunclock includes vector map routines which generate Earth maps on the fly.
+- These maps are resizeable, they can generate contours or filled areas 
+  (3 fill/contour options...)
+- Sunclock can optionally handle (non resizeable) external pixmaps as well
+- Resizing routines for map and clock windows.
+- Shading algorithm showing twilight / luminosity
+
+Version 3.13, October 26, 2000.
+
+- The sunclock package now includes a vector map of the Earth (loosely
+  derived from the xearth package by Kirk Lauritz Johnson). The clock and 
+  map data files are built from there by the `mapgen` utility. This
+  allows users to select the respective size of the clock and map windows 
+  at compile time (not yet at run time :-(  but should come soon...)
+- New "night/no night" options
+- Coordinates can now appear in decimal degrees or degrees, minutes, seconds
+- Various small GUI fixes (window placement again...)
+  
+Version 3.12, October 9, 2000.
+
+- Fix for a bug affecting the configuration of language and color settings 
+  through the config file. 
+
+Version 3.11, October 8, 2000.
+
+- Italian localization by Alessio Bragadini <alessio@sevenseas.org>
+  Spanish localization by Pedro Gimeno <pgimeno@iname.com>
+- Improved window placement, as suggested by 
+  Pascal Jermini <Pascal.Jermini@epfl.ch>
+- Merged patch by Pedro Gimeno, implementing the wm_delete_window
+  protocol.
+- Corrected calculation of solartime, sunrise and sunset, which was
+  sometimes inaccurate by 10-15 minutes or more.
+  Notified by Orn E. Hansen <oe.hansen@gamma.telenordia.se>
+- Fix in setTZ routine, related to the putenv/setenv duality
+  Thanks to Roland Rosenfeld <roland@spinnaker.de> for this.
+  Hopefully this fixes the persistent problems with timezones...
+- Merged window-manager icons from the Debian sources.
+- New command line options added (-rcfile -language -jump -progress -menu 
+  among others). Time progress and configuration file can now be set 
+  arbitrarily.
+- The command line options can now also be set through the configuration 
+  file, and the version number appears in the tips of 'H' option
+  Suggestions by François Massonneau <frmas@free.fr>
+
+Version 3.10, October 3, 2000.
+
+- Interface has been improved and should be substantially easier to use,
+  following some suggestions by François Massonneau <frmas@free.fr>
+- Added Sun position functionality
+- Added "hour extension" mode
+- Swedish localization by <janoh@telia.com>
+- Fixes in monochrome mode
+- Other small changes, including bug fixes ( timezone problem, notified by
+  Dimitri Papadopoulos-Orfanos <papadopo@shfj.cea.fr> )
+
+Version 3.04, September 7, 2000.
+
+- Fixed tzset() problems on some systems (Linux-Mandrake...) by always
+  calling tzset() before each localtime() call.
+  Notified by Andy Barlak <andyb@eskimo.com> and
+  <dicw@kalevanet.sointula.bc.ca> )
+
+Version 3.03, September 5, 2000.
+
+- Corrected local timezone bug (wasn't correctly initialized nor reset) 
+  Problem notified by Philippe Le Hegaret <plh@w3.org>
+- Added "1 minute" as one of possible values of progression time
+- The value of the sun apparent diameter was wrong (too large) and thus 
+  produced slightly inaccurate day length values!
+- Fix for SunPro compiler 
+  by Dimitri Papadopoulos-Orfanos <papadopo@shfj.cea.fr>
+
+Version 3.02, September 4, 2000.
+
+- Corrected segmentation fault problem, occurring when environment variable 
+  LANG was not set (patch from Joerg Plate <Joerg@Plate.cx>)
+- Fixed behaviour of window placement, which was somewhat unsatisfactory
+- Slight code change for the sake of Solaris compatibility
+- Improved sunclock.man, Imakefile and Makefile.noimake
+- Added horizontal scroll for bottom text line
+- Merged German app-default file provided by several German users
+  (including the Debian maintainer Roland Rosenfeld <roland@spinnaker.de>)
+
+Version 3.01, August 31, 2000.
+
+- Added command line options -map and -clock
+- A lot of compilation fixes, notified by Andy Barlak <andyb@eskimo.com>
+- Makefile.noimake improved
+
+Version 3.00, August 26, 2000.
+
+Complete rewrite of the GUI, many bug corrections, improvements and
+new functions, resulting in a much more powerful program.
+
+- Added keyboard and mouse controls
+- Added command line and inline help
+- Added switches: coordinates, distances, legal time, solar time
+- Added marks, equator, tropic & arctic circles
+- Time can be quickly modified forward and backward, so that
+  the evolution of sun illumination and seasons can be observed
+- Improved time management routines
+- Improved and debugged monochrome mode
+
+Version 2.1, June 6, 2000.
+
+- Updated coordinates.txt with a better source 
+  (http://www.ecf.toronto.edu/~mao/)
+
+Version 2.0, April 21, 2000.
+
+- Added XFlush in doTimeout to force update (for LinuxPPC...) 
+
+Version 1.9, January 21, 2000.
+
+- Iconic stuff fixed again (didn't work for all WM) 
+
+Version 1.8, August 20, 1999.
+
+- Fixed small bug in mono mode 
+
+Version 1.7, August 17, 1999.
+
+- Added Calculation of city distances 
+
+Version 1.6, March 28, 1999.
+
+- Fixed iconic stuff, which did not seem to work properly (at least on
+  my system...)
+
+Version 1.5, March 15, 1999.
+
+- Added color support (cities can be shown in various colors, and the
+  selected city is shown with a different color)
+- Added further options to support these extensions
+
+Version 1.4, March 4, 1999.
+
+- Changed syntax in ~/.sunclockrc, so as to allow spaces in city names
+  (syntax is now  name: latitude longtitude timezone)
+- City name and coordinates now displayed in bottom line
+- Enabled exit, when clicking on the bottom line
+
+==============================================================================
+
+Version 1.3, November 16, 1994.
+
+- Timezone now displayed in icon. Suggested by Rich Gonzalez
+    (gonzo@u.washington.edu)
+- Should now work under Linux/XFree86 - Wolfram Gloger
+    (wmglo@Dent.MED.Uni-Muenchen.DE)
+
+Version 1.2, October 13, 1994.
+
+- Used new icon suppied by Anthony Thyssen (anthony@cit.gu.edu.au). I can't
+  see a difference can you see a difference.
+- Fixed stuff for HP using NEW_CTIME ifdef as suggested by Richard Lloyd
+  (R.K.Lloyd@csc.liv.ac.uk). Untested by me on HP.
+- Support for Solaris thanks to Dave Yearke (yearke@calspan.com) who also
+  pointed out some other bugs and fixes.
+
+==============================================================================
+
+Version 1.1, August 31, 1994.
+
+This is version 1.1 of sunclock. New in this version is support for an
+interactive map. This allows you to define places on the map in your
+~/.sunclockrc file. These places will show up labelled in the large map,
+(not the icon). Clicking on a place will change the clock readout to the
+timezone of the that place. See the man page for details.
+
+Stephen Martin, smartin@fujitsu.ca - August 31, 1994.
+
+==============================================================================
+
+Original X11 version, November 1988
+
+Written by John Mackin, <john@cs.su.oz.AU>, based on a 
+Suntools program by John Walker, <kelvin@acad.uu.NET>.
+
+

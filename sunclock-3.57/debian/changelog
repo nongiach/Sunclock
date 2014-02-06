@@ -1,0 +1,376 @@
+sunclock (3.57-1) unstable; urgency=low
+
+  * New upstream version 3.57.
+
+ -- Jean-Pierre Demailly <demailly@fourier.ujf-grenoble.fr>  Fri, 22 Aug 2008 16:27:42 +0200
+
+sunclock (3.56-5) unstable; urgency=low
+ 
+  * Build-Depends on xutils-dev instead of xutils, because imake was moved
+    (Closes: #485218)
+  * Upgrade to Standards-Version 3.8.0:
+    - Fix Homepage header in control file.
+  * 08_manpage_hyphen.dpatch: Fix hyphen used as minus sign in man page.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 14 Jun 2008 11:46:24 +0200
+
+sunclock (3.56-4) unstable; urgency=low
+ 
+  * Migrate all patches to dpatch mechanism.
+  * 06_CET-1CDT: Fix timezones for Budapest, Warsaw, Bratislava and the
+    Torun Radiotelescope from CET-2CDT to CET-1CDT (Closes: #438761).
+  * 07_zlib_largefile_workaround: Workaround for zlib.h bug, which
+    requires _LARGEFILE64_SOURCE if _FILE_OFFSET_BITS is set to 64
+    (see #439980) (Closes: #438924).
+
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 09 Sep 2007 15:41:54 +0200
+ 
+sunclock (3.56-3) unstable; urgency=low
+ 
+  * Do not strip emx in Imakefile install (Closes: #438076).
+  * Check existence of Makefile instead of avoiding output of make clean.
+  * menu: move from Apps/Tools to Applications/Science/Geoscience.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 18 Aug 2007 14:21:56 +0200
+ 
+
+sunclock (3.56-2) unstable; urgency=low
+
+  * Update debian/watch file.
+  * Update debian/copyright.
+  * Remove $(XLIB) from LOCAL_LIBRARIES in Imakefiles. This removes
+    unnecessary libXext from binaries.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 30 Sep 2006 10:50:42 +0200
+
+sunclock (3.56-1) unstable; urgency=low
+
+  * New upstream version 3.56.
+  * Avoid compressing MANUAL.emx, because this has to be opened by emx.
+  * Upgrade to debhelper v5.
+  * Upgrade to Standards-Version 3.7.2 (no changes).
+  * Install emx to /usr/share/sunclock/bin and fix all references to this.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sun,  2 Jul 2006 14:20:54 +0200
+
+sunclock (3.54.1-1) unstable; urgency=low
+
+  * New upstream version 3.54.1.
+  * Again install the emx shared libraries to /usr/share/sunclock/emx
+    instead of /usr/share/editkit.
+  * Ged rid of circular dependency between sunclock and sunclock-maps.
+    sunclock-maps now conflicts with the old version of sunclock, which it
+    was split off, to avoid problems with files moving from one package to
+    the other (Closes: #339927).
+  * Replace Latin1 chars in man page by groff ASCII char names.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 11 Dec 2005 17:52:17 +0100
+
+sunclock (3.54-2) unstable; urgency=low
+
+  * Add debian/watch with current FTP server.
+  * Correct URL in copyright file.
+  * Stop build-depending on libselinux1-dev but compile with
+    SELINUX_LIBS="" to work around the bug that xutils enables HasSELinux
+    by default, while this program doesn't use it (Closes: #320606).
+
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 31 Jul 2005 13:33:12 +0200
+
+sunclock (3.54-1) unstable; urgency=low
+
+  * New upstream version 3.54.
+    - Corrects a segmentation fault (Closes: #315462).
+  * No longer depends on xterm because interal emx editor is now used.
+  * Upgrade to Standards-Version 3.6.2:
+    - Install emx (external editor for manual viewing) into
+      /usr/lib/sunclock (instead of /usr/bin).
+  * Add build depenency on libselinux1-dev until xutils is fixed to build
+    packages without HasSELinux again :-(
+
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 30 Jul 2005 13:40:02 +0200
+
+sunclock (3.53-1) unstable; urgency=low
+
+  * New upstream version 3.53.
+
+ -- Roland Rosenfeld <roland@debian.org>  Thu,  3 Feb 2005 16:54:28 +0100
+
+sunclock (3.52-2) unstable; urgency=low
+
+  * sunclock-maps now Replaces sunclock (<< 3.50pre1-3), because older
+    versions of sunclock contained files, which are now in sunclock-maps.
+    (Closes: #278169)
+
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 25 Oct 2004 20:06:09 +0200
+
+sunclock (3.52-1) unstable; urgency=low
+
+  * New upstream version 3.52.
+
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 11 Oct 2004 13:54:23 +0200
+
+sunclock (3.51-1) unstable; urgency=low
+
+  * New upstream version 3.51.
+  * Add build-dependency on libpng12-dev.
+  * Replace hyphens (-) by minus signs (\-) in man page.
+
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 27 Aug 2004 19:28:57 +0200
+
+sunclock (3.50pre1-3) unstable; urgency=low
+
+  * Add Homepage URL to package description.
+  * Rename Swedish i18n file from Sunclock.se to Sunclock.sv (Closes: #240743).
+  * Upgrade to Standards-Version 3.6.1 (no changes).
+  * Build-Depend on libx11-dev, libxpm-dev, libxext-dev instead of xlibs-dev.
+  * Quote section title in menu entry.
+  * Use full color icons for the menu entry and add icon16x16 and
+    icon32x32 entries.
+  * Split earthmaps into architecture independent package sunclock-maps.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 10 Apr 2004 21:28:22 +0200
+
+sunclock (3.50pre1-2) unstable; urgency=low
+
+  * Disable #ifdef HParchitecture in Imakefile, which causes trouble on
+    HPPA.
+  
+ -- Roland Rosenfeld <roland@debian.org>  Wed, 26 Feb 2003 21:37:43 +0100
+
+sunclock (3.50pre1-1) unstable; urgency=low
+
+  * New upstream version 3.50pre1.
+  * The new upstream package doesn't talk about Mercator (Closes: #102869).
+  * Remove empty dir /usr/share/lintian/overrides.
+  * Upgrade to Standards-Version 3.5.8:
+    - remove support for DEB_BUILD_OPTION "debug"
+    - add support for DEB_BUILD_OPTION "noopt"
+  * Upgrade to debhelper >=4 and use debian/compat instead of DH_COMPAT.
+    - removed debian/conffiles.
+    - updated debian/rules according to debhelper example.
+  * Install new icon sunclock2.xpm (and create a cmap.xpm color version
+    for menu).  
+  * Move XPMs from /usr/X11R6/include/X11/pixmaps to /usr/share/pixmaps.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 23 Feb 2003 17:04:15 +0100
+
+sunclock (3.46-1) unstable; urgency=low
+
+  * New upstream version 3.46.
+  * Remove dh_testversion from debian/rules (use build-deps instead).
+  * Comment out special rules for HPArchitecture from Imakefile, because
+    they cause problems on hppa (Closes: #105070).
+
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 15 Jul 2001 13:18:45 +0200
+
+sunclock (3.40.010514-1) unstable; urgency=low
+
+  * New upstream version 3.40 (2nd release, don't ask me why upstream
+    didn't use a new version number).
+  * This upstream release should solve the problem with enlightenment
+    (Closes: #96214).
+  * Remove dh_testversion from debian/rules (use build-depends instead)
+
+ -- Roland Rosenfeld <roland@debian.org>  Mon, 14 May 2001 18:37:23 +0200
+
+sunclock (3.40-1) unstable; urgency=low
+
+  * New upstream version 3.40.
+  * Remove debian/sunclock_help* (no longer used upstream).
+  * Change HELPCOMMAND from xterm to x-terminal-emulator.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 13 May 2001 21:12:45 +0200
+
+sunclock (3.38-2) unstable; urgency=low
+
+  * Comment out caida.jpg mapimage from Sunclockrc, because this isn't
+    included in the Debian package.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sun,  6 May 2001 18:57:49 +0200
+
+sunclock (3.38-1) unstable; urgency=low
+
+  * New upstream version 3.38.
+  * Modify sunclock_help to use x-terminal-emulator instead of xterm.
+  * Add a man page for sunclock_help.
+  * Use dh_installman instead of dh_installmanpages in debian/rules.
+  * Remove test for nostrip in DEB_BUILD_OPTIONS, since this is handled by
+    debhelper >=2.1.6 internally.
+  * Remove dh_suidregister from debian/rules and upgrade Standards-Version
+    to 3.5.2.
+
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 17 Apr 2001 19:53:55 +0200
+
+sunclock (3.37-1) unstable; urgency=low
+
+  * New upstream version 3.37.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 14 Apr 2001 15:44:30 +0200
+
+sunclock (3.34-1) unstable; urgency=low
+
+  * New upstream version 3.34.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 31 Mar 2001 11:31:49 +0200
+
+sunclock (3.33-1) unstable; urgency=low
+
+  * New upstream version 3.33.
+
+ -- Roland Rosenfeld <roland@debian.org>  Wed, 21 Mar 2001 19:15:44 +0100
+
+sunclock (3.32-1) unstable; urgency=low
+
+  * New upstream version 3.32.
+  * override.Lintian removed because the signature of VMF files is changes
+    to %!VMF
+
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 20 Mar 2001 18:56:28 +0100
+
+sunclock (3.31-1) unstable; urgency=low
+
+  * New upstream version 3.31.
+  * s/MANPATH/MANDIR/ in debian/rules.
+
+ -- Roland Rosenfeld <roland@debian.org>  Mon,  5 Mar 2001 20:00:14 +0100
+
+sunclock (3.30-2) unstable; urgency=low
+
+  * Add missing build-dependency to libjpeg62-dev (Closes: #88094).
+
+ -- Roland Rosenfeld <roland@debian.org>  Thu,  1 Mar 2001 19:16:24 +0100
+
+sunclock (3.30-1) unstable; urgency=low
+
+  * New upstream version 3.30.
+  * Move Sunclockrc from /usr/share/sunclock to /etc.
+  * Create override.Lintian to avoid lintian errors, which thinks that the
+    new VMF file format is some kind of shell interpreter.
+
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 27 Feb 2001 18:42:58 +0100
+
+sunclock (3.28-1) unstable; urgency=low
+
+  * New upstream version 3.28.
+
+ -- Roland Rosenfeld <roland@debian.org>  Wed, 17 Jan 2001 18:46:58 +0100
+
+sunclock (3.27-1) unstable; urgency=low
+
+  * New upstream version 3.27.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 30 Dec 2000 11:09:38 +0100
+
+sunclock (3.26-1) unstable; urgency=low
+
+  * New upstream version 3.26.
+  * Add xutils to Build-Depends, because xmkmf and mkdirhier are used.
+  * Add "Suggests: imagemagick", because convert(1) can be used to load
+    various formats of earth maps.
+
+ -- Roland Rosenfeld <roland@debian.org>  Thu, 21 Dec 2000 18:30:43 +0100
+
+sunclock (3.21-2) unstable; urgency=low
+
+  * Applied patch from upstream author to avoid maxint as the distance
+    from one position to the same position.
+  * Remove symlink removal hack, which isn't needed with xlibs-dev
+    (>=4.0.1-11). Changed Build-Depends accordingly.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sat, 16 Dec 2000 14:09:58 +0100
+
+sunclock (3.21-1) unstable; urgency=low
+
+  * New upstream version 3.21.
+  * New XFree86 4.0 policy:
+    - Recompile with app-defaults installed in /etc/X11 (needs some
+      workarounds in debian/rules).
+    - Change Build-Depends from xlib6g-dev to xlibs.
+    - Make /etc/X11/app-defaults/Sunclock a conffile.
+    - Remove symlink /usr/X11R6/lib/X11/app-defaults ->
+      ../../../.././etc/X11/app-defaults which is created by imake, but is
+      completely useless.
+  
+ -- Roland Rosenfeld <roland@debian.org>  Tue,  5 Dec 2000 17:47:26 +0100
+
+sunclock (3.13-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 27 Oct 2000 11:15:30 +0200
+
+sunclock (3.12-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Roland Rosenfeld <roland@debian.org>  Tue, 10 Oct 2000 13:00:43 +0200
+
+sunclock (3.11-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Roland Rosenfeld <roland@debian.org>  Mon,  9 Oct 2000 12:35:59 +0200
+
+sunclock (3.10-1) unstable; urgency=low
+
+  * New upstream version.
+  * Fix problem with setting TZ environment variable (unsetting is correct
+    upstream).
+
+ -- Roland Rosenfeld <roland@debian.org>  Wed,  4 Oct 2000 11:50:06 +0200
+
+sunclock (3.04-1) unstable; urgency=low
+
+  * New upstream version.
+  * Fix problem with setting TZ environment variable.
+
+ -- Roland Rosenfeld <roland@debian.org>  Sun, 10 Sep 2000 23:04:54 +0200
+
+sunclock (3.02-1) unstable; urgency=low
+
+  * New upstream version (by new upstream maintainer).
+  * Upgrade to Standards-Version 3.2.1:
+    - Evaluate DEB_BUILD_OPTIONS for -g and strip.
+    - Move binary and manpage from /usr/X11R6/* to /usr/*.
+  * Upgrade to new debhepler:
+    - Change to DH_COMPAT=2.
+    - Add some dh_* calls to debian/rules.
+
+ -- Roland Rosenfeld <roland@debian.org>  Mon,  4 Sep 2000 20:39:19 +0200
+
+sunclock (1.5-3) unstable; urgency=low
+
+  * Added hints to menu file (Closes: #52007).
+  * Added icon and mini-icon (to menu file).
+  * Upgrade to Standards version 3.1.0: Add Build-Depends.
+
+ -- Roland Rosenfeld <roland@debian.org>  Mon,  6 Dec 1999 10:38:55 +0100
+
+sunclock (1.5-2) unstable; urgency=low
+
+  * Upgrade to Debian Standards version 3.0.1.
+  * Recompiled with libc6 2.1 and xfree86 3.3.5.
+
+ -- Roland Rosenfeld <roland@debian.org>  Wed,  6 Oct 1999 09:37:12 +0200
+
+sunclock (1.5-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Roland Rosenfeld <roland@debian.org>  Wed,  7 Apr 1999 22:10:57 +0200
+
+sunclock (1.4-2) unstable; urgency=low
+
+  * Fix string function declarations for glibc2.1 (fixes #30406).
+    Thanks to Christian Meder <meder@isr.uni-stuttgart.de> who provided
+    the patch.
+  * Upgraded Standards-Version to 2.5.0.0 (no changes).
+  * Removed the -Wall warnings (no real problems).
+
+ -- Roland Rosenfeld <roland@debian.org>  Sun,  6 Dec 1998 18:21:50 +0100
+
+sunclock (1.4-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Roland Rosenfeld <roland@debian.org>  Fri, 23 Oct 1998 17:14:14 +0200

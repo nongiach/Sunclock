@@ -1,0 +1,232 @@
+--- sunclock-3.56/i18n/Sunclock.de.orig	2004-10-31 22:28:19.000000000 +0100
++++ sunclock-3.56/i18n/Sunclock.de	2006-07-09 13:04:28.000000000 +0200
+@@ -1,12 +1,12 @@
+ # German
+ # Day names
+-Son
+-Mon
+-Die
+-Mit
+-Don
+-Fre
+-Sam
++So
++Mo
++Di
++Mi
++Do
++Fr
++Sa
+ # Months
+ Jan
+ Feb
+@@ -23,7 +23,7 @@
+ # Additional labels
+ Position
+ GMT Zeit
+-Sonnen Zeit
++Sonnenzeit
+ Gesetzliche Zeit
+ Länge des Tages
+ Sonnenaufgang
+@@ -38,47 +38,47 @@
+ Klicke auf eine Stadt
+ Klicke auf eine Position
+ Klicke nacheinander auf zwei Positionen
+-Doppel Klicke oder Betätige ° für ° ' "
++Doppelklicke oder betätige ° für ° ' "
+ #
+ Taste
+-Tastatur/Maus Steuerung
++Tastatur/Maussteuerung
+ Abbruch
+-Abbruch Menü
+-Unknown key binding !!
++Menü beenden
++Unbekannte Tastenzuordnung !!
+ Synchro
+ Schrittweite =
+ Zeitverschiebung =
+ #
+-City name
+-Timezone
++Städtename
++Zeitzone
+ Latitude
+ Longitude
+-Size
+-Warning: %s, lat = %s lon = %s%salready in list of cities !!
+-Overriding previous entry for %s
++Größe
++Warnung: %s, lat = %s lon = %s%sist bereits in der Städteliste !!
++Überschreibe vorhergehenden Eintrag für %s
+ #
+ Option
+-Activating selected option...
+-Option incorrect or not available at runtime !!
+-Options: strike <Ctrl><Space> for blank space within an item
+-(once)
+-(periodically, period %d seconds)
+-(with starry sky)
+-(blank root window)
+-with the following rather long list of options:
+-Starting from **, options are runtime configurable
+-Calculating new image...
+-Sunclock hat eine Reihe interner Prozeduren, auf die per Mausklick oder Tastatur zugegriffen werden kann:
++Ausgewählte Option aktivieren...
++Ungültige Option bzw. nicht zur Laufzeit wählbar !!
++Optionen: für ein Leerzeichen eines Eintrags <Ctrl><Space> drücken
++(einmalig)
++(periodisch, alle %d Sekunden)
++(mit starrem Himmel)
++(ohne Fensterinhalt)
++mit der folgenden, länglichen Optionsliste:
++Beginnend mit ** sind die Optionen zur Laufzeit konfigurierbar
++Berechne neues Bild...
++Sunclock hat eine Reihe interner Funktionen, auf die per Mausklick/Tastatur zugegriffen werden kann:
+ # General help
+-Zeige die Hilfe und Optionen an (H oder Mausknopf 1)
+-Eingabe Erde kartendatei (F oder Mausknopf 2)
++Zeige die Hilfe sowie Optionen an (H oder Mausknopf 1)
++Eingabe Erdekartendatei (F oder Mausknopf 2)
+ Zoom (Z oder Mausknopf 3)
+-Parameteren der Städte
+-Option command window
++Städteparameter
++Optionskommandofenster
+ Verwende Koordinaten-Modus
+ Verwende Sonnenzeit-Modus
+ Verwende Abstands-Modus
+-Verwende Stunde-Erweiterung-Modus
++Verwende Stunden-Erweiterungs-Modus
+ Verwende Modus für gesetzliche Zeit
+ Verschiebe Zeit vorwärts
+ Verschiebe Zeit rückwärts
+@@ -88,38 +88,38 @@
+ Zeichne/Lösche Sonne und Mond
+ Zeichne/Lösche Meridiane
+ Zeichne/Lösche Parallelen
+-Zeichne/Lösche Tropische/Äquator/Polarkreise
+-Öffnen ein neues Karte Fenster
+-Schließen das Fenster
+-Iconifiziere das Fenster
++Zeichne/Lösche Tropenlinien/Äquator/Polarkreise
++Neues Kartenfenster öffnen
++Fenster schließen
++Fenster ikonifizieren
+ Kartenfenster auffrischen
+-Adjust window width to screen size
+-Vorhergehende Fenster Grösse zurück
+-Wechsle zwischen Uhr und Kartenfenster
++Fenstergröße auf Bildschirmgröße aufziehen
++Vorhergende Fenstergröße restaurieren
++Wechseln zwischen Uhr und Kartenfenster
+ Aktiviere Kommando (-command Option)
+-Beende Programm
++Programm beenden
+ # Zoom window help
+-Activate new zoom settings
+-Return to previous zoom settings
+-Cancel change in zoom settings
+-Set aspect by resizing main window
+-Cycle through zoom modes 0,1,2
+-Zoom in by factor 1.2
+-Zoom out by factor 1/1.2 = 0.833
+-Return to zoom factor = 1 (full map)
+-Center zoom area on selected city or location
+-Synchronize zoom operation
++Neue Vergrößerung aktivieren
++Alte Vergrößerung restaurieren
++Änderung der Vergrößerung verwerfen
++Seitenverhältnis durch Fenstergrößenänderung setzen
++Zwischen Vergrößerungen 0, 1 und 2 wechseln
++Vergrößerung mit Faktor 1.2
++Verkleinerung mit Faktor 1/1.2 = 0.833
++Ursprüngliche Vergrößerung mit Faktor = 1 (gesamtes Bild)
++Vergrößerung an ausgewählter Stadt/ausgewähltem Platz zentrieren
++Vergörßerungsoperation synchronisieren
+ # Option window help
+-Activate the option
+-Erase the option command line
+-Synchronisieren die Fenster oder nicht
+-Copy map to root window
+-Erase map from root window
+-Start/stop animation
++Option aktivieren
++Kommandozeile löschen
++Fenstersynchronisation an oder aus
++Aktuelles Bild als Bildschirmhintergrund
++Bildschirmhintergrund löschen
++Animation starten/stoppen
+ # Urban window help
+-Use degrees, minutes, seconds, or decimal degrees
+-Search/select city
+-Modify city parameters
+-Create new city location
+-Delete city
++Benutze Grade/Minuten/Sekunden oder Dezimalgrade
++Stadt suchen/auswählen
++Städteparameter ändern
++Neuen Städteeintrag anlegen
++Stadt löschen
+ # End
+--- sunclock-3.56/sunclock.c.orig	2006-06-22 08:21:40.000000000 +0200
++++ sunclock-3.56/sunclock.c	2006-07-09 10:38:14.000000000 +0200
+@@ -3142,8 +3142,8 @@
+ {
+    int ilon, ilat, width, dw = 0;
+    struct TextLabel * label;
+-   if(!Context->wintype) return;
+    char *text, *text0, *ptr;
++   if(!Context->wintype) return;
+
+    label = Context->label;
+    while (label) if (label->text && *label->text) {
+--- sunclock-3.56/readvmf.c.orig	2006-06-22 11:06:30.000000000 +0200
++++ sunclock-3.56/readvmf.c	2006-07-09 12:16:37.000000000 +0200
+@@ -29,6 +29,7 @@
+ #include <math.h>
+ #ifdef ZLIB
+ #include <zlib.h>
++#include <errno.h>		/* (ThMO) */
+ #endif
+
+ #include "sunclock.h"
+@@ -433,6 +434,8 @@
+   char *str, *ptr;
+ #ifdef ZLIB
+   gzFile * fd;
++  int   plen;
++  char  *zpath;
+ #else
+   FILE *fd;
+ #endif
+@@ -460,6 +463,28 @@
+     fprintf(stderr, "Loading vector map %s\n", path);
+ #ifdef ZLIB
+   fd = gzopen(path, "r");
++  #define	Z_PATH_EXT	".gz"
++  #define	Z_PATH_LEN	( sizeof( Z_PATH_EXT)- 1)
++  if ( fd == NULL && errno == ENOENT
++       && ( ( plen= strlen( path)) < Z_PATH_LEN
++            || strcmp( &path[ plen- Z_PATH_LEN], Z_PATH_EXT) != 0))
++    {	/* try to open gzip'd file... (ThMO) */
++  #if	__GNUC__ >= 2
++      zpath= alloca( plen+ Z_PATH_LEN+ 1);
++  #else
++      zpath= salloc( plen+ Z_PATH_LEN+ 1);
++  #endif
++      memcpy( zpath, path, plen);
++      memcpy( zpath+ plen, Z_PATH_EXT, Z_PATH_LEN+ 1);
++      if ( verbose)
++        fprintf( stderr, "Try loading vector map %s\n", zpath);
++      fd= gzopen( zpath, "r");
++  #if	!( __GNUC__ >= 2)
++      free( zpath);
++  #endif
++    }
++  #undef	Z_PATH_EXT
++  #undef	Z_PATH_LEN
+ #else
+   fd = fopen(path, "r");
+ #endif

@@ -1,0 +1,95 @@
+# Installation options
+#
+DESTDIR=/usr
+MANDIR=/X11R6/man/man1
+SHAREDIR=/share/sunclock
+XAPPLOADDIR=/lib/X11/app-defaults
+XBINDIR=/bin/X11
+
+#
+CC=gcc
+MKDIRHIER=mkdir -p
+
+#
+# Compile options:
+#
+# Set -DSYSV if on System V
+# Set -DNEW_CTIME if using the table-driven version of ctime (i.e., if
+#   your struct tm contains a tm_zone field)
+# Pick -O or -g
+#
+
+# For HP
+#CFLAGS=-Ae -Wall -DSHAREDIR=\"$(DESTDIR)$(SHAREDIR)\"
+
+# For SunOS
+#CFLAGS=-I/usr/openwin/include -O -DNEW_CTIME -DSHAREDIR=\"$(DESTDIR)$(SHAREDIR)\"
+
+# For Solaris
+#CFLAGS=-I/usr/openwin/include -O -Wall -DSHAREDIR=\"$(DESTDIR)$(SHAREDIR)\"
+#LFLAGS=-L/usr/openwin/lib
+
+# For OpenServer
+#CFLAGS=-I/usr/include/X11 -DMAXPATHLEN=1024 -O -DSHAREDIR=\"$(DESTDIR)$(SHAREDIR)"
+#LFLAGS=-L/usr/lib/X11 -lXpm -ljpeg -lsocket
+
+# For Linux
+CFLAGS=-I/usr/include/X11 -O -Wall -DZLIB -DSHAREDIR=\"$(DESTDIR)$(SHAREDIR)\"
+LFLAGS= -L/usr/X11R6/lib -lXpm -ljpeg -lpng -lz -lX11 -lm
+
+OFILES=sunclock.o astro.o widgets.o tildepath.o dirlist.o \
+       readgif.o readjpeg.o readpng.o readvmf.o readxpm.o
+HFILES=bitmaps.h langdef.h sunclock.h version.h
+
+all: sunclock emx
+
+sunclock.o: $(HFILES)
+readgif.o: $(HFILES)
+readjpeg.o: $(HFILES)
+readpng.o: $(HFILES)
+readvmf.o: $(HFILES)
+readxpm.o: $(HFILES)
+
+sunclock: $(OFILES) $(HFILES)
+	$(CC) $(OFILES) -o $@ $(CFLAGS) $(LFLAGS)
+
+emx:
+	cd editkit ; make -f Makefile.kit emx \
+	    DESTDIR=$(DESTDIR) \
+	    BINDIR=$(SHAREDIR)/bin \
+	    MANDIR=$(SHAREDIR)/editkit/man \
+	    SHAREDIR=$(SHAREDIR)/editkit/rc	
+	
+install: install.man sunclock
+	$(MKDIRHIER) $(DESTDIR)/$(XBINDIR)
+	install -s -c sunclock $(DESTDIR)/$(XBINDIR)
+	$(MKDIRHIER) $(DESTDIR)$(SHAREDIR)/i18n
+	cp -f Sunclockrc $(DESTDIR)$(SHAREDIR)
+	cd i18n ; rm -f *~ ; cp -f Sunclock.* $(DESTDIR)$(SHAREDIR)/i18n
+	$(MKDIRHIER) $(DESTDIR)$(SHAREDIR)/earthmaps/vmf
+	cd vmf ; rm -f *~ ; cp -f * $(DESTDIR)$(SHAREDIR)/earthmaps/vmf
+	cd editkit ; make -f Makefile.kit emx \
+	    DESTDIR=$(DESTDIR) \
+	    BINDIR=$(SHAREDIR)/bin \
+	    MANDIR=$(SHAREDIR)/editkit/man \
+	    SHAREDIR=$(SHAREDIR)/editkit/rc ; \
+	make -f Makefile.kit install DESTDIR=$(DESTDIR)
+	cat MESSAGE
+
+install.man:
+	cp -f sunclock.man $(DESTDIR)$(MANDIR)/sunclock.1x
+	if [ -r $(DESTDIR)$(MANDIR)/sunclock.1x.gz ] ; \
+	   then gzip -f $(DESTDIR)$(MANDIR)/sunclock.1x ; fi
+
+clean:
+	rm -f core *.bak *.o *~ sunclock
+	cd tools ; make clean
+	cd editkit ; make -f Makefile.kit clean
+
+realclean: clean
+	rm -f Makefile 
+
+tar.gz:
+	DIR=`pwd` ; cd .. ; tar cvf - $DIR | gzip -fc - > $DIR.tar.gz
+
+

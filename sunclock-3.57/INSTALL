@@ -1,0 +1,39 @@
+INSTALLATION instructions
+=========================
+
+1. (Optional)
+Customize the Sunclockrc file and add locations of cities you would like
+to see appearing on sunclock's main map. Information on geographic
+coordinates of many important cities (probably with a bias towards 
+North America) is included in the "coordinates.txt" file. This
+will provide system wide data. After the install, users will still
+have the possibility to produce their own settings in ~/.sunclockrc
+(same format as for Sunclockrc), which can either supplement or 
+supersede the system wide settings.
+
+2. (Optional)
+If your native language is not one of the currently supported languages, 
+translate Sunclock_en into Sunclock_XX where XX are the initials of the 
+desired language, as referred to by the environment parameter $LANG
+(already supported internationalization files are located in the 
+subdirectory i18n). And please send Sunclock_XX to the current maintainer 
+(demailly@fourier.ujf-grenoble.fr) so that it can be included in later
+releases...
+
+3. Type 'xmkmf' and then 'make' to build the binary executable. If
+your system does not support the Imakefile process, customize by hand
+the Makefile.noimake file and type 'make -f Makefile.noimake'
+
+4. Install the binary and app-defaults files
+Type 'make install' (respectively 'make -f Makefile.noimake install').
+(the man page will be automatically installed as well)
+You should be done and have sunclock running properly!
+
+The most basic help is obtained by typing 
+   sunclock -help,
+and the man page is accessed by clicking 'h' twice while running the 
+program.
+
+Jean-Pierre Demailly
+<demailly@fourier.ujf-grenoble.fr>
+

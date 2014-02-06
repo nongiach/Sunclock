@@ -1,0 +1,25 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+In 3.51, support for GIF and PNG images has been ADDED
+
+Strating with 3.55/3.56, the VMF format has been SLIGHTLY IMPROVED. Three
+vector maps are now provided in the source package :
+  timezones.vmf (time zone boundaries = new default map)
+  countries.vmf (political boundaries)
+  landwater.vmf (simple land/water boundaries, = default in zoom widget)
+
+Our companion program 'xrmap' can be used to visualize and produce more
+accurate vector maps of the Earth, using the CIA world data bank II and
+other public domain data, check
+   ftp://ftp.ac-grenoble.fr/ge/geosciences/xrmap
+
+More information on geographic names, city coordinates, timezones can be 
+obtained from
+   http://gnpswww.nima.mil/geonames/GNS/
+
+Bundled packages of Earth maps from various sources (NASA, xglobe/xplanet
+& VTerrain projects, ...) are provided in
+   ftp://ftp.ac-grenoble.fr/ge/geosciences/sunclock/data_packages
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+

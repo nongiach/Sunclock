@@ -1,0 +1,19 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 04_dont_strip_emx.dpatch by Roland Rosenfeld <roland@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Do not strip emx in Imakefile install (Closes: #438076).
+
+@DPATCH@
+diff -urNad sunclock~/Imakefile sunclock/Imakefile
+--- sunclock~/Imakefile
++++ sunclock/Imakefile
+@@ -83,7 +83,7 @@
+ 	$(MKDIRHIER) $(DESTDIR)$(SHAREDIR)/earthmaps/vmf
+ 	cd vmf ; rm -f *~ ; cp -f * $(DESTDIR)$(SHAREDIR)/earthmaps/vmf
+ 	$(MKDIRHIER) $(DESTDIR)$(LIBDIR)
+-	install -c -s editkit/emx $(DESTDIR)$(LIBDIR)/
++	install -c editkit/emx $(DESTDIR)$(LIBDIR)/
+ 	$(MKDIRHIER) $(DESTDIR)$(SHAREDIR)/editkit
+ 	cd editkit ; install -c -m 444 rc.example README MANUAL.emacs \
+ 		$(DESTDIR)$(SHAREDIR)/editkit

@@ -1,0 +1,73 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 01_emx_directory.dpatch by Roland Rosenfeld <roland@debian.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Place emx in LIBDIR instead of SHAREDIR
+
+@DPATCH@
+diff -urNad sunclock~/Imakefile sunclock/Imakefile
+--- sunclock~/Imakefile
++++ sunclock/Imakefile
+@@ -10,6 +10,9 @@
+ XCOMM Name of share subdirectory of DESTDIR:
+ SHAREDIR=/share/sunclock
+ 
++XCOMM Name of library subdirectory of DESTDIR:
++LIBDIR=/lib/sunclock
++
+ XCOMM Name of DOCDIR's subdirectories of DESTDIR:
+ DOCDIR=/X11R6/lib/X11/doc 
+ DOCHTMLDIR=/X11R6/lib/X11/doc/html
+@@ -48,7 +51,7 @@
+ #ZLIBDIR=-L/usr/lib
+ #JINC=-I/usr/include
+ 
+-CCOPTIONS=-O -DZLIB -DSHAREDIR=\"$(DESTDIR)$(SHAREDIR)\"
++CCOPTIONS=-O -DZLIB -DSHAREDIR=\"$(DESTDIR)$(SHAREDIR)\" -DLIBDIR=\"$(DESTDIR)$(LIBDIR)\"
+ #endif
+ 
+ SRCS=sunclock.c astro.c widgets.c tildepath.c dirlist.c \
+@@ -64,7 +67,7 @@
+ all::
+ 	cd editkit ; xmkmf ; make emx \
+           DESTDIR=$(DESTDIR) \
+-	  BINDIR=$(SHAREDIR)/bin \
++	  BINDIR=$(LIBDIR)/bin \
+ 	  MANDIR=$(SHAREDIR)/editkit \
+ 	  SHAREDIR=$(DESTDIR)$(SHAREDIR)/editkit
+ 
+@@ -78,8 +81,8 @@
+ 	cd i18n ; rm -f *~ ; cp -f Sunclock.* $(DESTDIR)$(SHAREDIR)/i18n
+ 	$(MKDIRHIER) $(DESTDIR)$(SHAREDIR)/earthmaps/vmf
+ 	cd vmf ; rm -f *~ ; cp -f * $(DESTDIR)$(SHAREDIR)/earthmaps/vmf
+-	$(MKDIRHIER) $(DESTDIR)$(SHAREDIR)/bin
+-	install -c -s editkit/emx $(DESTDIR)$(SHAREDIR)/bin
++	$(MKDIRHIER) $(DESTDIR)$(LIBDIR)
++	install -c -s editkit/emx $(DESTDIR)$(LIBDIR)/
+ 	$(MKDIRHIER) $(DESTDIR)$(SHAREDIR)/editkit
+ 	cd editkit ; install -c -m 444 rc.example README MANUAL.emacs \
+ 		$(DESTDIR)$(SHAREDIR)/editkit
+diff -urNad sunclock~/sunclock.h sunclock/sunclock.h
+--- sunclock~/sunclock.h
++++ sunclock/sunclock.h
+@@ -18,7 +18,7 @@
+ #include <time.h>
+ #include "version.h"
+ 
+-#define EDITORCOMMAND SHAREDIR"/bin/emx -edit 0 -fn 9x15"  /* Default text editor */
++#define EDITORCOMMAND LIBDIR"/emx -edit 0 -fn 9x15"  /* Default text editor */
+ #define	FAILFONT	"fixed"
+ 
+ /* num of bitmaps to accomodate 1 mark and 2 spatial objets (Sun, Moon) */
+diff -urNad sunclock~/sunclock.man sunclock/sunclock.man
+--- sunclock~/sunclock.man
++++ sunclock/sunclock.man
+@@ -511,7 +511,7 @@
+ .BI "\-editorcommand " string
+ Specify an external file editor program that will be called through keyboard 
+ shortcut double 'h' (call help). Default is 
+-"/usr/share/sunclock/bin/emx \-edit 0 \-fn 9x15"
++"/usr/lib/sunclock/emx \-edit 0 \-fn 9x15"
+ (included emx editor, in no-edit mode...)
+ .TP
+ .BI "\-jump " "number[unit] (where unit=s,m,h,d,M,Y)"
