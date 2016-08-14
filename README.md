@@ -1,3 +1,5 @@
+![screenshot](https://github.com/mdoege/Sunclock/raw/master/screenshot2.png)
+
 Excerpt from the Sunclock README (complete version is in sunclock directory)
 --------------------------------
 
